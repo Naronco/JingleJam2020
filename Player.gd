@@ -6,6 +6,7 @@ extends KinematicBody
 # var b = "text"
 
 var PLAYER_GRAVITY = Vector3(0, -9.8, 0)
+var targetBasis
 
 var velocity = Vector3(0, 0, 0)
 
@@ -19,6 +20,7 @@ var inGame = false
 func _ready():
 	rotationHelper = $RotationHelper
 	camera = $RotationHelper/Camera
+	targetBasis = self.transform.basis
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -30,7 +32,7 @@ func _physics_process(delta):
 	var walkingDir = Vector3()
 	
 	# Plane of player movement defined by basis of 
-	var rotHelperTransform = rotationHelper.get_global_transform()
+	var globalTransform = rotationHelper.get_global_transform()
 	
 	# (x,y) coordinates in player movement plane
 	var input_movement_vector = Vector2()
@@ -43,14 +45,30 @@ func _physics_process(delta):
 		input_movement_vector.x -= 1
 	if Input.is_action_pressed("movement_right"):
 		input_movement_vector.x += 1
+		
+	# DEBUG ACTION
+	if Input.is_action_just_pressed("debug"):
+		var oldGravity = PLAYER_GRAVITY
+		PLAYER_GRAVITY = Vector3(9.8, 0, 0)
+		
+		# Assume oldGravity and newGravity DO NOT POINT IN THE SAME DIRECTION
+		var rotAxis = oldGravity.cross(PLAYER_GRAVITY).normalized()
+		var rotAngle = acos(oldGravity.normalized().dot(PLAYER_GRAVITY.normalized()))
+
+		# Rotate basis
+		targetBasis = transform.basis.rotated(rotAxis, rotAngle)
+
+	# TODO: THIS IS NOT FRAMERATE INDEPENDENT, PLEASE FIX BEFORE RELEASE
+	transform.basis = transform.basis.slerp(targetBasis, 10 * delta)
 
 	input_movement_vector = input_movement_vector.normalized()
 	
 	# Transform (x,y) player movement plane into global space
-	walkingDir -= rotHelperTransform.basis.z * input_movement_vector.y
-	walkingDir += rotHelperTransform.basis.x * input_movement_vector.x
+	walkingDir -= globalTransform.basis.z * input_movement_vector.y
+	walkingDir += globalTransform.basis.x * input_movement_vector.x
 	# walkingDir should be normalized still
 	
+	print(str("Basis vectors: ", globalTransform.basis.z, ", ", globalTransform.basis.x))
 	print(walkingDir)
 	
 	# Project walking direction onto the plane perpendicular to gravity
