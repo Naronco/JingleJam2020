@@ -12,7 +12,7 @@
 [ext_resource path="res://color_luts/funky.png" type="Texture" id=10]
 [ext_resource path="res://color_luts/cold.png" type="Texture" id=11]
 [ext_resource path="res://ReverseCard.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Enemy.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Snowman.tscn" type="PackedScene" id=13]
 [ext_resource path="res://RoadBarriers.tscn" type="PackedScene" id=14]
 
 [sub_resource type="CapsuleShape" id=1]
@@ -425,14 +425,16 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1.476 )
 [node name="ReverseCard3" parent="test1" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.63825, 0.717323, 0.857119 )
 
-[node name="Enemy" parent="test1" instance=ExtResource( 13 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.83825, 2.07856, 3.50799 )
-
 [node name="RoadBarriers" parent="test1" instance=ExtResource( 14 )]
 transform = Transform( -0.974339, 0, -0.225087, 0, 1, 0, 0.225087, 0, -0.974339, 16.511, 0.5, -14.3682 )
 
 [node name="RoadBarriers2" parent="test1" instance=ExtResource( 14 )]
 transform = Transform( 0.971359, 0, 0.237618, 0, 1, 0, -0.237618, 0, 0.971359, 20.2982, 0.500001, -14.5642 )
+
+[node name="Snowman" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.545, 1.51215, 8.23452 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.939693, 0.196174, 0.280166, -2.66914e-07, -0.819152, 0.573577, 0.34202, -0.538986, -0.769751, 0, 6.49306, -21.603 )
@@ -447,3 +449,4 @@ environment = SubResource( 6 )
 
 [node name="ColorGradingFilter" parent="." instance=ExtResource( 5 )]
 material = SubResource( 7 )
+temperature = 0.0
