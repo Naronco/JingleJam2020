@@ -26,6 +26,37 @@ func _ready():
 	camera = $RotationHelper/Camera
 	targetBasis = self.transform.basis
 
+# new_gravity IS NOT parallel to old_gravity
+func _change_gravity(new_gravity):
+	var oldGravity = PLAYER_GRAVITY
+	PLAYER_GRAVITY = new_gravity
+	
+	# TODO Use physics server gravity also for player.
+	PhysicsServer.area_set_param(get_world().get_space(), PhysicsServer.AREA_PARAM_GRAVITY_VECTOR, PLAYER_GRAVITY)
+	
+	# Assume oldGravity and newGravity DO NOT POINT IN THE SAME DIRECTION
+	var rotAxis = oldGravity.cross(PLAYER_GRAVITY).normalized()
+	var rotAngle = acos(oldGravity.normalized().dot(PLAYER_GRAVITY.normalized()))
+
+	# Rotate basis
+	targetBasis = transform.basis.rotated(rotAxis, rotAngle)
+
+# g -> -g
+func _flip_gravity():
+	var oldGravity = PLAYER_GRAVITY
+	PLAYER_GRAVITY = -PLAYER_GRAVITY
+	
+	# TODO Use physics server gravity also for player.
+	PhysicsServer.area_set_param(get_world().get_space(), PhysicsServer.AREA_PARAM_GRAVITY_VECTOR, PLAYER_GRAVITY)
+	
+	# In this case, the cross product of old_gravity and new_gravity is zero, so we have to (arbitrarily) pick an axis of rotation and rotate about 180 deg
+	# Choose some perpendicular axis (This method should be stable but rather random)
+	var up = PLAYER_GRAVITY.normalized()
+	var rotAxis = Vector3(up.y, -up.x, 0) if up.z < up.x else Vector3(0, -up.z, up.y)
+	var rotAngle = PI
+	
+	targetBasis = transform.basis.rotated(rotAxis, rotAngle)
+
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -52,15 +83,7 @@ func _physics_process(delta):
 		
 	# DEBUG ACTION
 	if Input.is_action_just_pressed("debug"):
-		var oldGravity = PLAYER_GRAVITY
-		PLAYER_GRAVITY = Vector3(9.8, 0, 0)
-		
-		# Assume oldGravity and newGravity DO NOT POINT IN THE SAME DIRECTION
-		var rotAxis = oldGravity.cross(PLAYER_GRAVITY).normalized()
-		var rotAngle = acos(oldGravity.normalized().dot(PLAYER_GRAVITY.normalized()))
-
-		# Rotate basis
-		targetBasis = transform.basis.rotated(rotAxis, rotAngle)
+		_flip_gravity()
 
 	# TODO: THIS IS NOT FRAMERATE INDEPENDENT, PLEASE FIX BEFORE RELEASE
 	transform.basis = transform.basis.slerp(targetBasis, 10 * delta)

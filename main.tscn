@@ -96,5 +96,51 @@ material/0 = ExtResource( 3 )
 [node name="CollisionShape" type="CollisionShape" parent="test1/RigidBody3"]
 shape = SubResource( 4 )
 
+[node name="test2 (mirrored)" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, -1, 0, 0, 0, 1, 0, 20, 0 )
+mesh = ExtResource( 2 )
+material/0 = ExtResource( 3 )
+
+[node name="StaticBody3" type="StaticBody" parent="test2 (mirrored)"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.10948e-07, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="test2 (mirrored)/StaticBody3"]
+shape = SubResource( 2 )
+
+[node name="RigidBody" type="RigidBody" parent="test2 (mirrored)"]
+transform = Transform( 0.828813, 0, 0.559526, 0, 1, 0, -0.559526, 0, 0.828813, -3.29966, 0.75, 3.42734 )
+
+[node name="crate" type="MeshInstance" parent="test2 (mirrored)/RigidBody"]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
+mesh = ExtResource( 6 )
+material/0 = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="test2 (mirrored)/RigidBody"]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
+shape = SubResource( 3 )
+
+[node name="RigidBody2" type="RigidBody" parent="test2 (mirrored)"]
+transform = Transform( 0.516055, 0, 0.856555, 0, 1, 0, -0.856555, 0, 0.516055, -3.95609, 3.29784, 3.31004 )
+
+[node name="crate" type="MeshInstance" parent="test2 (mirrored)/RigidBody2"]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
+mesh = ExtResource( 6 )
+material/0 = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="test2 (mirrored)/RigidBody2"]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
+shape = SubResource( 3 )
+
+[node name="RigidBody3" type="RigidBody" parent="test2 (mirrored)"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.2232, 0.5, -3.7608 )
+mass = 20.0
+
+[node name="container" type="MeshInstance" parent="test2 (mirrored)/RigidBody3"]
+mesh = ExtResource( 4 )
+material/0 = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="test2 (mirrored)/RigidBody3"]
+shape = SubResource( 4 )
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 6 )
