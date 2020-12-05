@@ -118,9 +118,6 @@ func _physics_process(delta):
 	walkingDir += globalTransform.basis.x * input_movement_vector.x
 	# walkingDir should be normalized still
 	
-	print(str("Basis vectors: ", globalTransform.basis.z, ", ", globalTransform.basis.x))
-	print(walkingDir)
-	
 	# Project walking direction onto the plane perpendicular to gravity
 	var up = -PLAYER_GRAVITY.normalized()
 	walkingDir -= up.dot(walkingDir) * up
@@ -157,6 +154,10 @@ func _input(event):
 		if inGame:
 			camera.rotate_x(-event.relative.y * mouseSensitivity)
 			rotationHelper.rotate_y(-event.relative.x * mouseSensitivity)
+
+			var camera_rot = camera.rotation_degrees
+			camera_rot.x = clamp(camera_rot.x, -90, 90)
+			camera.rotation_degrees = camera_rot
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
