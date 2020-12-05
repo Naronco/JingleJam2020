@@ -2,3 +2,6 @@
 
 [resource]
 vertex_color_use_as_albedo = true
+params_diffuse_mode = 4
+params_specular_mode = 3
+params_billboard_mode = 1

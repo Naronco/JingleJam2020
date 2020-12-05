@@ -41,8 +41,9 @@ func _on_Paintball_body_entered(body):
 	# Get Reflect from collision_normal and collision_velocity before that collision
 	var n_collision_velocity = last_update_velocity
 	var n_collision_norm = local_collision_norm.normalized() * 2
-	print("vel = " 		+ String(n_collision_velocity))
-													#r=d−2(d⋅n)n
+	
+	#Calculate reflect vector with the formula:
+	##r=d−2(d⋅n)n
 	var reflectDir = n_collision_velocity - 2*(n_collision_velocity.dot(n_collision_norm)) * n_collision_norm
 
 	# Particle emitting to Reflect direction
