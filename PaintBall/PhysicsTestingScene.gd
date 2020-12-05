@@ -17,7 +17,7 @@ func _ready():
 	
 	timer = Timer.new()
 	timer.autostart = true
-	timer.wait_time = 0.2
+	timer.wait_time = 2
 	timer.one_shot = false
 	timer.connect("timeout", self, "_shoot")
 	add_child(timer)
