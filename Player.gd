@@ -166,6 +166,9 @@ func _physics_process(delta):
 	var push = 0.1
 	for index in get_slide_count():
 		var collision = get_slide_collision(index)
+		if collision.get_collider().name == "Enemy":
+			print(collision.get_collider().velocity)
+			collision.get_collider().velocity += -collision.normal * 2
 		if collision.collider.has_method("apply_central_impulse"):
 			print("Pushing")
 			collision.collider.apply_central_impulse(-collision.normal * velocity.length() * push)
