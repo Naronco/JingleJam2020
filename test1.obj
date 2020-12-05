@@ -1,7 +1,7 @@
 # Blender v2.91.0 OBJ File: 'test1.blend'
 # www.blender.org
 mtllib test1.mtl
-o Cube_Cube.001
+o level_Cube.001
 v -2.500000 0.000000 2.500000
 v 3.500000 0.000000 4.500000
 v 2.500000 0.000000 4.500000
