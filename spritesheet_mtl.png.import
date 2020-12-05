@@ -2,25 +2,27 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spritesheet_mtl.png-f3d158defb63456141800c82ae5b3c6b.stex"
+path.s3tc="res://.import/spritesheet_mtl.png-f3d158defb63456141800c82ae5b3c6b.s3tc.stex"
+path.etc2="res://.import/spritesheet_mtl.png-f3d158defb63456141800c82ae5b3c6b.etc2.stex"
 metadata={
-"vram_texture": false
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://spritesheet_mtl.png"
-dest_files=[ "res://.import/spritesheet_mtl.png-f3d158defb63456141800c82ae5b3c6b.stex" ]
+dest_files=[ "res://.import/spritesheet_mtl.png-f3d158defb63456141800c82ae5b3c6b.s3tc.stex", "res://.import/spritesheet_mtl.png-f3d158defb63456141800c82ae5b3c6b.etc2.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
-flags/filter=true
+flags/repeat=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -30,5 +32,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
