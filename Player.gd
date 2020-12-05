@@ -5,6 +5,9 @@ extends KinematicBody
 # var a = 2
 # var b = "text"
 
+var jumpVel = 5.0
+var walkingSpeed = 3.0
+
 var PLAYER_GRAVITY = Vector3(0, -9.8, 0)
 var targetBasis
 
@@ -76,13 +79,15 @@ func _physics_process(delta):
 	walkingDir -= up.dot(walkingDir) * up
 	walkingDir = walkingDir.normalized()
 
-	var speed = 2.0
-	var target = speed * walkingDir
+	var target = walkingSpeed * walkingDir
 	# target is perpendicular to gravity
 
 	# Set velocity into walking dir, but leave component along gravity untouched.
 	velocity = velocity.dot(up) * up + target
 	velocity += PLAYER_GRAVITY * delta
+
+	if Input.is_action_just_pressed('movement_jump'):
+		velocity = up * jumpVel + (velocity - velocity.dot(up) * up)
 	
 	velocity = move_and_slide(velocity, up)
 
