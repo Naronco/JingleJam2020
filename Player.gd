@@ -40,7 +40,7 @@ func _ready():
 # new_gravity IS NOT parallel to old_gravity
 func _change_gravity(new_gravity):
 	if basisSlerping:
-		pass
+		return
 	
 	var oldGravity = PLAYER_GRAVITY
 	PLAYER_GRAVITY = new_gravity
@@ -61,7 +61,7 @@ func _change_gravity(new_gravity):
 # g -> -g
 func flip_gravity():
 	if basisSlerping:
-		pass
+		return
 
 	var oldGravity = PLAYER_GRAVITY
 	PLAYER_GRAVITY = -PLAYER_GRAVITY
