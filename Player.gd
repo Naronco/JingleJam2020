@@ -68,7 +68,6 @@ func _flip_gravity():
 	# PhysicsServer.area_set_param(get_world().get_space(), PhysicsServer.AREA_PARAM_GRAVITY_VECTOR, PLAYER_GRAVITY)
 	
 	# In this case, the cross product of old_gravity and new_gravity is zero, so we have to (arbitrarily) pick an axis of rotation and rotate about 180 deg
-	# Choose some perpendicular axis (This method should be stable but rather random)
 	var up = -PLAYER_GRAVITY.normalized()
 	var forward = rotationHelper.get_global_transform().basis.z # Always perpendicular to up
 	var rotAxis = up.cross(forward).normalized() # Actually, cross(up, forward) should already be normalized
