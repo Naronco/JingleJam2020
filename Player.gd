@@ -11,6 +11,9 @@ export(float) var mouseSensitivity = 0.002
 
 var PLAYER_GRAVITY = Vector3(0, -9.8, 0)
 
+const ACCEL = 16
+const DEACCEL = 32
+
 var SLERP_TIME = 0.5 # in seconds
 var lastBasis
 var basisSlerping = false
@@ -18,6 +21,7 @@ var basisSlerpTime = 0.0 # in seconds
 var targetBasis
 
 var velocity = Vector3(0, 0, 0)
+var velocityBeforeJump = Vector3()
 
 var rotationHelper
 var camera
@@ -123,16 +127,40 @@ func _physics_process(delta):
 	walkingDir -= up.dot(walkingDir) * up
 	walkingDir = walkingDir.normalized()
 
-	var target = walkingSpeed * walkingDir
-	# target is perpendicular to gravity
+	if is_on_floor():
+		# target is perpendicular to gravity
+		var target = walkingSpeed * walkingDir
+		# Walk regularly
+		# Set velocity into walking dir, but leave component along gravity untouched.
+		
+		var upVel = velocity.dot(up) * up
+		var planeVel = velocity - upVel
 
-	# Set velocity into walking dir, but leave component along gravity untouched.
-	velocity = velocity.dot(up) * up + target
+		var accel
+		if walkingDir.dot(planeVel) > 0:
+			accel = ACCEL
+		else:
+			accel = DEACCEL
+
+		planeVel = planeVel.linear_interpolate(target, accel * delta)
+		velocity = planeVel + upVel
+	else:
+		var airAccel = 10
+		var airFrictionCoeff = 2
+		# Treat movement input from user as force change, not as velocity, when not on floor
+		var upVel = velocity.dot(up) * up
+		var planeVel = velocity - upVel
+		velocity = upVel + (planeVel - airFrictionCoeff * planeVel * delta + walkingDir * delta * airAccel)
+
 	velocity += PLAYER_GRAVITY * delta
 
 	if is_on_floor():
+		velocityBeforeJump = Vector3()
+
 		if Input.is_action_just_pressed('movement_jump'):
-			velocity = up * jumpVel + (velocity - velocity.dot(up) * up)
+			var velInPlane = (velocity - velocity.dot(up) * up)
+			velocityBeforeJump = velInPlane
+			velocity = up * jumpVel + velInPlane
 	
 	velocity = move_and_slide(velocity, up)
 	
