@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://test1.obj" type="ArrayMesh" id=2]
@@ -45,7 +45,7 @@ ss_reflections_fade_out = 1.8025
 ss_reflections_depth_tolerance = 0.3
 ssao_enabled = true
 
-[sub_resource type="ShaderMaterial" id=7]
+[sub_resource type="ShaderMaterial" id=8]
 shader = ExtResource( 7 )
 shader_param/lut_size = 16.0
 shader_param/filter_alpha = 1.0
@@ -171,4 +171,4 @@ shape = SubResource( 4 )
 environment = SubResource( 7 )
 
 [node name="ColorGradingFilter" parent="." instance=ExtResource( 5 )]
-material = SubResource( 7 )
+material = SubResource( 8 )
