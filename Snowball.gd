@@ -7,6 +7,9 @@ extends Area
 
 export(float) var damage = 1.0
 export(Vector3) var velocity = Vector3()
+export(float) var vanishTime = 10.0 # in s
+
+var timeSinceSpawn = 0.0 # in s
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,3 +27,7 @@ func _on_body_enter(body):
 
 func _process(delta):
 	transform.origin += delta * velocity
+	
+	timeSinceSpawn += delta
+	if timeSinceSpawn >= vanishTime:
+		queue_free()
