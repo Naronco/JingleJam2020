@@ -5,8 +5,9 @@ extends KinematicBody
 # var a = 2
 # var b = "text"
 
-var jumpVel = 5.0
-var walkingSpeed = 3.0
+export(float) var jumpVel = 5.0
+export(float) var walkingSpeed = 6.0
+export(float) var mouseSensitivity = 0.002
 
 var PLAYER_GRAVITY = Vector3(0, -9.8, 0)
 var targetBasis
@@ -100,7 +101,6 @@ func _physics_process(delta):
 			collision.collider.apply_central_impulse(-collision.normal * velocity.length() * push)
 
 func _input(event):
-	var sensitivity = 0.001
 	# Mouse in viewport coordinates.
 	if event is InputEventMouseButton:
 		print("Mouse Click/Unclick at: ", event.position)
@@ -109,8 +109,8 @@ func _input(event):
 			inGame = true
 	elif event is InputEventMouseMotion:
 		if inGame:
-			camera.rotate_x(-event.relative.y * sensitivity)
-			rotationHelper.rotate_y(-event.relative.x * sensitivity)
+			camera.rotate_x(-event.relative.y * mouseSensitivity)
+			rotationHelper.rotate_y(-event.relative.x * mouseSensitivity)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
