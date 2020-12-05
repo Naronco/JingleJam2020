@@ -16,7 +16,9 @@ func _physics_process(delta):
 	var velUp = velocity.dot(up) * up
 	var velPlane = velocity - velUp
 
-	velocity += 2 * -velPlane * delta
+	var floorFrictionCoeff = 2
+
+	velocity += floorFrictionCoeff * -velPlane * delta
 	velocity += gravityDir * gravityStrength * delta
 
 	velocity = move_and_slide(velocity, up)
