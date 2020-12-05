@@ -66,5 +66,6 @@ movement_jump={
 
 [rendering]
 
-quality/filters/anisotropic_filter_level=16
+quality/filters/anisotropic_filter_level=1
+quality/shadows/filter_mode=0
 environment/default_environment="res://default_env.tres"
