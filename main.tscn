@@ -1,18 +1,35 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://test1.obj" type="ArrayMesh" id=2]
 
 [sub_resource type="CapsuleShape" id=1]
 margin = 0.001
 radius = 0.3
 height = 1.1
 
-[sub_resource type="SpatialMaterial" id=4]
+[sub_resource type="SpatialMaterial" id=2]
 
-[sub_resource type="PlaneMesh" id=2]
+[sub_resource type="PlaneMesh" id=3]
 
-[sub_resource type="BoxShape" id=3]
+[sub_resource type="BoxShape" id=4]
 extents = Vector3( 10, 0.1, 10 )
+
+[sub_resource type="ProceduralSky" id=6]
+sky_top_color = Color( 0.666667, 0.858824, 0.964706, 1 )
+
+[sub_resource type="Environment" id=7]
+background_mode = 2
+background_sky = SubResource( 6 )
+fog_enabled = true
+fog_depth_begin = 5.0
+fog_depth_end = 77.4
+fog_depth_curve = 1.7411
+ss_reflections_enabled = true
+ss_reflections_max_steps = 128
+ss_reflections_fade_in = 0.219613
+ss_reflections_depth_tolerance = 0.1
+ssao_enabled = true
 
 [node name="Spatial" type="Spatial"]
 
@@ -33,21 +50,29 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 7.10543e-15 )
 
 [node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
 transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )
-material_override = SubResource( 4 )
-mesh = SubResource( 2 )
+material_override = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="StaticBody2" type="StaticBody" parent="."]
 transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 5, 5, 0 )
 
 [node name="MeshInstance" type="MeshInstance" parent="StaticBody2"]
 transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )
-material_override = SubResource( 4 )
-mesh = SubResource( 2 )
+material_override = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody2"]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
+
+[node name="test1" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.64296, 0.223976, 0.731134 )
+mesh = ExtResource( 2 )
+material/0 = null
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 7 )
