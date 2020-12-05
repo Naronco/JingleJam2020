@@ -65,8 +65,9 @@ func _flip_gravity():
 	
 	# In this case, the cross product of old_gravity and new_gravity is zero, so we have to (arbitrarily) pick an axis of rotation and rotate about 180 deg
 	# Choose some perpendicular axis (This method should be stable but rather random)
-	var up = PLAYER_GRAVITY.normalized()
-	var rotAxis = Vector3(up.y, -up.x, 0) if up.z < up.x else Vector3(0, -up.z, up.y)
+	var up = -PLAYER_GRAVITY.normalized()
+	var forward = rotationHelper.get_global_transform().basis.z # Always perpendicular to up
+	var rotAxis = up.cross(forward).normalized() # Actually, cross(up, forward) should already be normalized
 	var rotAngle = PI
 	
 	lastBasis = transform.basis
