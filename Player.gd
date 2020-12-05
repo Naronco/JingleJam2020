@@ -86,8 +86,9 @@ func _physics_process(delta):
 	velocity = velocity.dot(up) * up + target
 	velocity += PLAYER_GRAVITY * delta
 
-	if Input.is_action_just_pressed('movement_jump'):
-		velocity = up * jumpVel + (velocity - velocity.dot(up) * up)
+	if is_on_floor():
+		if Input.is_action_just_pressed('movement_jump'):
+			velocity = up * jumpVel + (velocity - velocity.dot(up) * up)
 	
 	velocity = move_and_slide(velocity, up)
 
