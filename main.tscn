@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://test1.obj" type="ArrayMesh" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://ReverseCard.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Snowman.tscn" type="PackedScene" id=13]
 [ext_resource path="res://RoadBarriers.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Crane.tscn" type="PackedScene" id=15]
+[ext_resource path="res://ContainerField.tscn" type="PackedScene" id=16]
 
 [sub_resource type="CapsuleShape" id=1]
 margin = 0.001
@@ -80,6 +82,7 @@ shape = SubResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 7.10543e-15 )
 
 [node name="test1" type="MeshInstance" parent="."]
+material_override = ExtResource( 3 )
 mesh = ExtResource( 2 )
 material/0 = ExtResource( 3 )
 
@@ -87,7 +90,6 @@ material/0 = ExtResource( 3 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.10948e-07, 0 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="test1/StaticBody3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 2 )
 
 [node name="Crate" parent="test1" instance=ExtResource( 4 )]
@@ -137,7 +139,6 @@ transform = Transform( 0.828813, 0, 0.559526, 0, 1, 0, -0.559526, 0, 0.828813, -
 
 [node name="Container" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( 0.999991, 0, 0.00422368, 0, 1, 0, -0.00422368, 0, 0.999991, 8.3203, 0.5, -0.48362 )
-mode = 1
 sleeping = true
 
 [node name="Container3" parent="test1" instance=ExtResource( 6 )]
@@ -146,269 +147,191 @@ sleeping = true
 
 [node name="Container4" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( 0.999972, 0, 0.00743503, 0, 1, 0, -0.00743503, 0, 0.999972, 8.3203, 3.09569, -0.48362 )
-mode = 1
 sleeping = true
 
 [node name="Container5" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( 0.999955, 0, -0.00949445, 0, 1, 0, 0.00949445, 0, 0.999955, 14.498, 3.09569, -0.48362 )
-mode = 1
 sleeping = true
 
 [node name="Container2" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 10.8544, 0.5, -6.12176 )
-mode = 1
 
 [node name="Container8" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 34.134, 0.5, 21.7794 )
-mode = 1
 
 [node name="Container9" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 34.134, 0.5, 27.8902 )
-mode = 1
 
 [node name="Container10" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 34.134, 0.5, 6.67938 )
-mode = 1
 
 [node name="Container11" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 34.134, 0.5, 12.7902 )
-mode = 1
 
 [node name="Container12" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 34.134, 0.5, -8.52062 )
-mode = 1
 
 [node name="Container13" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 34.134, 0.5, -2.40983 )
-mode = 1
 
 [node name="Container14" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 36.634, 0.5, 21.7794 )
-mode = 1
 
 [node name="Container15" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 36.634, 0.5, 27.8902 )
-mode = 1
 
 [node name="Container16" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 36.634, 0.5, 6.67938 )
-mode = 1
 
 [node name="Container17" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 36.634, 0.5, 12.7902 )
-mode = 1
 
 [node name="Container18" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 36.634, 0.5, -8.52062 )
-mode = 1
 
 [node name="Container19" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 36.634, 0.5, -2.40983 )
-mode = 1
 
 [node name="Container20" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 34.134, 3.1, 21.7794 )
-mode = 1
 
 [node name="Container21" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 34.134, 3.1, 27.8902 )
-mode = 1
 
 [node name="Container24" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 34.134, 3.1, -8.52062 )
-mode = 1
 
 [node name="Container26" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 36.634, 3.1, 21.7794 )
-mode = 1
 
 [node name="Container28" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 36.634, 3.1, 6.67938 )
-mode = 1
 
 [node name="Container30" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 36.634, 3.1, -8.52062 )
-mode = 1
 
 [node name="Container31" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 36.634, 3.1, -2.40983 )
-mode = 1
 
 [node name="Container34" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 50.234, 0.5, 14.0794 )
-mode = 1
 
 [node name="Container35" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 50.234, 0.5, 20.1902 )
-mode = 1
 
 [node name="Container36" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 50.234, 0.5, -1.12062 )
-mode = 1
 
 [node name="Container37" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 50.234, 0.5, 4.99017 )
-mode = 1
 
 [node name="Container40" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 52.734, 0.5, 14.0794 )
-mode = 1
 
 [node name="Container41" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 52.734, 0.5, 20.1902 )
-mode = 1
 
 [node name="Container42" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 52.734, 0.5, -1.12062 )
-mode = 1
-
-[node name="Container56" parent="test1" instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 7.15, 0, -3.12537e-07, 70.834, 0.5, 10.2794 )
-mode = 1
-
-[node name="Container57" parent="test1" instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 7.15, 0, -3.12537e-07, 67.234, 0.5, 10.2794 )
-mode = 1
-
-[node name="Container58" parent="test1" instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 7.15, 0, -3.12537e-07, 63.634, 0.5, 10.2794 )
-mode = 1
-
-[node name="Container59" parent="test1" instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 7.15, 0, -3.12537e-07, 60.134, 0.5, 10.2794 )
-mode = 1
 
 [node name="Container43" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 52.734, 0.5, 4.99017 )
-mode = 1
 
 [node name="Container47" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 50.234, 3.1, 20.1902 )
-mode = 1
 
 [node name="Container48" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 50.234, 3.1, -1.12062 )
-mode = 1
 
 [node name="Container53" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 52.734, 3.1, 20.1902 )
-mode = 1
 
 [node name="Container54" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 52.734, 3.1, -1.12062 )
-mode = 1
 
 [node name="Container55" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 52.734, 3.1, 4.99017 )
-mode = 1
 
 [node name="Container38" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 42.634, 0.5, 14.0794 )
-mode = 1
 
 [node name="Container39" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 42.634, 0.5, 20.1902 )
-mode = 1
 
 [node name="Container44" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 42.634, 0.5, -1.12062 )
-mode = 1
 
 [node name="Container45" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 42.634, 0.5, 4.99017 )
-mode = 1
 
 [node name="Container50" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 45.134, 0.5, 14.0794 )
-mode = 1
 
 [node name="Container51" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 45.134, 0.5, 20.1902 )
-mode = 1
 
 [node name="Container80" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 45.134, 0.5, -1.12062 )
-mode = 1
 
 [node name="Container81" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 45.134, 0.5, 4.99017 )
-mode = 1
 
 [node name="Container82" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 42.634, 3.1, 14.0794 )
-mode = 1
 
 [node name="Container84" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 42.634, 3.1, -1.12062 )
-mode = 1
 
 [node name="Container85" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 42.634, 3.1, 4.99017 )
-mode = 1
 
 [node name="Container90" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 44.6286, 0.5, 30.3848 )
-mode = 1
 
 [node name="Container91" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50.7394, 0.5, 30.3848 )
-mode = 1
 
 [node name="Container92" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 44.6286, 0.5, 27.8848 )
-mode = 1
 
 [node name="Container93" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50.7394, 0.5, 27.8848 )
-mode = 1
 
 [node name="Container94" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 44.6286, 3.1, 30.3848 )
-mode = 1
 
 [node name="Container96" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 44.6286, 3.1, 27.8848 )
-mode = 1
 
 [node name="Container98" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 44.6286, 0.5, -7.91522 )
-mode = 1
 
 [node name="Container99" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50.7394, 0.5, -7.91522 )
-mode = 1
 
 [node name="Container101" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50.7394, 0.5, -10.4152 )
-mode = 1
 
 [node name="Container102" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 44.6286, 3.1, -7.91522 )
-mode = 1
 
 [node name="Container103" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50.7394, 3.1, -7.91522 )
-mode = 1
 
 [node name="Container104" parent="test1" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 44.6286, 3.1, -10.4152 )
-mode = 1
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 44.629, 0.5, -10.415 )
 
 [node name="Container105" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50.7394, 3.1, -10.4152 )
-mode = 1
 
 [node name="Container88" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 45.134, 3.1, -1.12062 )
-mode = 1
 
 [node name="Container7" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 10.8544, 0.5, -11.3752 )
-mode = 1
 
 [node name="Container6" parent="test1" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 14.4431, 0.500001, 2.15144 )
-mode = 1
 sleeping = true
 
 [node name="ReverseCard2" parent="test1" instance=ExtResource( 12 )]
@@ -436,6 +359,18 @@ transform = Transform( 0.971359, 0, 0.237618, 0, 1, 0, -0.237618, 0, 0.971359, 2
 "Enemies",
 ] instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.545, 1.51215, 8.23452 )
+
+[node name="ContainerField" parent="test1" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 65.4, 0.5, 9.5 )
+numRows = 4
+containersPerRow = 7
+stackHeight = 4
+numGenerateContainers = 24
+
+[node name="Crane" parent="test1" instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 65.4, 0.5, 9.5 )
+pickupField = NodePath("../ContainerField")
+depositField = NodePath("../ContainerField")
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.939693, 0.196174, 0.280166, -2.66914e-07, -0.819152, 0.573577, 0.34202, -0.538986, -0.769751, 0, 6.49306, -21.603 )
