@@ -91,6 +91,12 @@ func _physics_process(delta):
 			velocity = up * jumpVel + (velocity - velocity.dot(up) * up)
 	
 	velocity = move_and_slide(velocity, up)
+	
+	var push = 10
+	for index in get_slide_count():
+		var collision = get_slide_collision(index)
+		if collision.collider.is_in_group("bodies"):
+			collision.collider.apply_central_impulse(-collision.normal * push)
 
 func _input(event):
 	var sensitivity = 0.001
