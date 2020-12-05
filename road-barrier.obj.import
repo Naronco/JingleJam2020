@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/road-barrier.obj-45786416948532c4d3994d4253826c8d.mesh"
+
+[deps]
+
+files=[ "res://.import/road-barrier.obj-45786416948532c4d3994d4253826c8d.mesh" ]
+
+source_file="res://road-barrier.obj"
+dest_files=[ "res://.import/road-barrier.obj-45786416948532c4d3994d4253826c8d.mesh", "res://.import/road-barrier.obj-45786416948532c4d3994d4253826c8d.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
