@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://test1.obj" type="ArrayMesh" id=2]
@@ -10,12 +10,11 @@ margin = 0.001
 radius = 0.3
 height = 1.1
 
-[sub_resource type="SpatialMaterial" id=2]
+[sub_resource type="ConcavePolygonShape" id=7]
+data = PoolVector3Array( -36.5, 4, 5, -36.5, 0.5, 5, 3.5, 4, 5, 3.5, 4, 5, -36.5, 0.5, 5, 3.5, 0.5, 5, 3.5, 0.5, 0, -36.5, 0.5, 0, 3.5, 4, 0, 3.5, 4, 0, -36.5, 0.5, 0, -36.5, 4, 0, 3.5, 0, 4.5, 3.5, 0.5, 5, -36.5, 0, 4.5, -36.5, 0, 4.5, 3.5, 0.5, 5, -36.5, 0.5, 5, -36.5, 0, 0.5, 3.5, 0, 0.5, -36.5, 0, 4.5, -36.5, 0, 4.5, 3.5, 0, 0.5, 3.5, 0, 4.5, -36.5, 0.5, 0, 3.5, 0.5, 0, -36.5, 0, 0.5, -36.5, 0, 0.5, 3.5, 0.5, 0, 3.5, 0, 0.5 )
 
-[sub_resource type="PlaneMesh" id=3]
-
-[sub_resource type="BoxShape" id=4]
-extents = Vector3( 10, 0.1, 10 )
+[sub_resource type="ConvexPolygonShape" id=8]
+points = PoolVector3Array( 0.468, 0.468, 0.5, 0.468, -0.468, 0.5, -0.468, 0.468, 0.5, -0.468, -0.468, 0.5, 0.5, 0.468, -0.468, 0.5, -0.468, -0.468, 0.5, 0.468, 0.468, 0.5, -0.468, 0.468, -0.468, 0.5, -0.468, 0.468, 0.5, -0.468, -0.468, 0.5, 0.468, 0.468, 0.5, 0.468, -0.5, 0.468, 0.468, -0.5, -0.468, 0.468, -0.5, 0.468, -0.468, -0.5, -0.468, -0.468, -0.468, 0.468, -0.5, -0.468, -0.468, -0.5, 0.468, 0.468, -0.5, 0.468, -0.468, -0.5, -0.468, -0.468, 0.5, -0.468, -0.5, 0.468, -0.5, -0.468, 0.468, -0.468, 0.5, 0.468, -0.468, 0.468, 0.5, -0.5, 0.468, 0.468, -0.5, -0.468, -0.468, -0.468, -0.5, -0.468, -0.468, -0.468, -0.5, -0.468, 0.468, -0.5, -0.468, 0.5, -0.468, -0.5, 0.468, -0.468, 0.5, -0.468, 0.468, 0.468, -0.5, 0.468, 0.468, -0.468, 0.5, 0.468, 0.468, 0.5, 0.468, 0.5, 0.468, 0.5, 0.468, 0.468, 0.468, -0.468, -0.5, 0.468, -0.5, -0.468, 0.5, -0.468, -0.468, 0.5, 0.468, -0.468, 0.468, 0.5, -0.468, 0.468, 0.468, -0.5, -0.468, -0.5, 0.468, -0.468, -0.5, -0.468, -0.5, -0.468, 0.468, -0.5, -0.468, -0.468, -0.468, 0.468, 0.5, -0.468, -0.468, 0.5, -0.5, 0.468, 0.468, -0.5, -0.468, 0.468, -0.468, 0.5, -0.468, -0.468, 0.5, 0.468, -0.5, 0.468, -0.468, -0.5, 0.468, 0.468, -0.468, -0.468, -0.5, -0.468, 0.468, -0.5, -0.5, -0.468, -0.468, -0.5, 0.468, -0.468, -0.468, -0.5, -0.468, 0.468, -0.5, -0.468, -0.468, -0.468, -0.5, 0.468, -0.468, -0.5, 0.468, 0.5, -0.468, -0.468, 0.5, -0.468, 0.468, 0.468, -0.5, -0.468, 0.468, -0.5, 0.5, -0.468, -0.468, 0.5, 0.468, -0.468, 0.468, -0.468, -0.5, 0.468, 0.468, -0.5, 0.468, -0.5, -0.468, 0.468, -0.5, 0.468, 0.5, -0.468, -0.468, 0.5, -0.468, 0.468, 0.468, 0.5, 0.468, 0.468, 0.5, -0.468, 0.5, 0.468, 0.468, 0.5, 0.468, -0.468, 0.468, -0.468, 0.5, 0.468, 0.468, 0.5, 0.5, -0.468, 0.468, 0.5, 0.468, 0.468, 0.468, -0.5, 0.468, -0.468, -0.5, 0.468, 0.468, -0.468, 0.5, -0.468, -0.468, 0.5, -0.468, 0.5, 0.468, 0.468, 0.5, 0.468, -0.468, 0.468, 0.5, 0.468, 0.468, 0.5, 0.468, -0.5, -0.468, -0.468, -0.5, -0.468, 0.468, -0.5, 0.468, -0.468, -0.5, 0.468 )
 
 [sub_resource type="ProceduralSky" id=5]
 sky_top_color = Color( 0.666667, 0.858824, 0.964706, 1 )
@@ -36,7 +35,7 @@ ssao_enabled = true
 [node name="Spatial" type="Spatial"]
 
 [node name="Player" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+transform = Transform( -0.195261, 0, 0.980751, 0, 1, 0, -0.980751, 0, -0.195261, 1.66177, 2, 2.35428 )
 script = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Player"]
@@ -48,43 +47,41 @@ shape = SubResource( 1 )
 [node name="Camera" type="Camera" parent="Player/RotationHelper"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 7.10543e-15 )
 
-[node name="StaticBody" type="StaticBody" parent="."]
-
-[node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )
-material_override = SubResource( 2 )
-mesh = SubResource( 3 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
-shape = SubResource( 4 )
-
-[node name="StaticBody2" type="StaticBody" parent="."]
-transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 5, 5, 0 )
-
-[node name="MeshInstance" type="MeshInstance" parent="StaticBody2"]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )
-material_override = SubResource( 2 )
-mesh = SubResource( 3 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="StaticBody2"]
-shape = SubResource( 4 )
-
 [node name="test1" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.66502, 0.223976, 0.689378 )
 mesh = ExtResource( 2 )
-material/0 = ExtResource( 3 )
+material/0 = null
 
-[node name="crate" type="MeshInstance" parent="test1"]
-transform = Transform( 1.39868, 0, 0.992555, 0, 1.71507, 0, -0.992555, 0, 1.39868, -3.09073, 0.848171, 3.47884 )
+[node name="StaticBody3" type="StaticBody" parent="test1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.10948e-07, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="test1/StaticBody3"]
+shape = SubResource( 7 )
+
+[node name="RigidBody" type="RigidBody" parent="test1"]
+transform = Transform( 0.828813, 0, 0.559526, 0, 1, 0, -0.559526, 0, 0.828813, -3.29966, 0.75, 3.42734 )
+mass = 0.01
+
+[node name="crate" type="MeshInstance" parent="test1/RigidBody"]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
 mesh = ExtResource( 6 )
 material/0 = ExtResource( 3 )
 
-[node name="crate2" type="MeshInstance" parent="test1"]
-transform = Transform( 0.178464, 0, 1.04252, 0, 1.05769, 0, -1.04252, 0, 0.178464, -3.13802, 2.19674, 3.29889 )
+[node name="CollisionShape" type="CollisionShape" parent="test1/RigidBody"]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
+shape = SubResource( 8 )
+
+[node name="RigidBody2" type="RigidBody" parent="test1"]
+transform = Transform( 0.516055, 0, 0.856555, 0, 1, 0, -0.856555, 0, 0.516055, -4.14089, 3.29784, 3.42734 )
+mass = 0.1
+
+[node name="crate" type="MeshInstance" parent="test1/RigidBody2"]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
 mesh = ExtResource( 6 )
 material/0 = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="test1/RigidBody2"]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
+shape = SubResource( 8 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 6 )
