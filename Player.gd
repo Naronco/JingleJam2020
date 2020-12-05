@@ -34,11 +34,13 @@ func _ready():
 	rotationHelper = $RotationHelper
 	camera = $RotationHelper/Camera
 	targetBasis = self.transform.basis
+	
+	get_tree().call_group("Enemies", "set_player", self)
 
 # new_gravity IS NOT parallel to old_gravity
 func _change_gravity(new_gravity):
 	if basisSlerping:
-		pass
+		return
 	
 	var oldGravity = PLAYER_GRAVITY
 	PLAYER_GRAVITY = new_gravity
@@ -57,9 +59,9 @@ func _change_gravity(new_gravity):
 	basisSlerpTime = 0.0
 
 # g -> -g
-func _flip_gravity():
+func flip_gravity():
 	if basisSlerping:
-		pass
+		return
 
 	var oldGravity = PLAYER_GRAVITY
 	PLAYER_GRAVITY = -PLAYER_GRAVITY
@@ -77,6 +79,11 @@ func _flip_gravity():
 	targetBasis = transform.basis.rotated(rotAxis, rotAngle)
 	basisSlerping = true
 	basisSlerpTime = 0.0
+
+func do_damage(source, dmg):
+	# TODO Take damage
+	print("Taking", dmg, "damage, got hit by", source.get_name())
+	pass
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -104,7 +111,7 @@ func _physics_process(delta):
 		
 	# DEBUG ACTION
 	if not basisSlerping and Input.is_action_just_pressed("debug"):
-		_flip_gravity()
+		flip_gravity()
 
 	if basisSlerping:
 		basisSlerpTime += delta
