@@ -23,6 +23,10 @@ config/icon="res://icon.png"
 
 ParticleCache="*res://PaintBall/ParticleCache.tscn"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "color_grading_lut" )
+
 [input]
 
 movement_forward={

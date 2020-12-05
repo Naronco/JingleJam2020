@@ -1,10 +1,16 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://test1.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://spritesheet.tres" type="Material" id=3]
 [ext_resource path="res://container.obj" type="ArrayMesh" id=4]
+[ext_resource path="res://ColorEffects.tscn" type="PackedScene" id=5]
 [ext_resource path="res://crate.obj" type="ArrayMesh" id=6]
+[ext_resource path="res://color_luts/color_effects.shader" type="Shader" id=7]
+[ext_resource path="res://color_luts/hot.png" type="Texture" id=8]
+[ext_resource path="res://main.gd" type="Script" id=9]
+[ext_resource path="res://color_luts/funky.png" type="Texture" id=10]
+[ext_resource path="res://color_luts/cold.png" type="Texture" id=11]
 
 [sub_resource type="CapsuleShape" id=1]
 margin = 0.001
@@ -39,7 +45,17 @@ ss_reflections_fade_out = 1.8025
 ss_reflections_depth_tolerance = 0.3
 ssao_enabled = true
 
+[sub_resource type="ShaderMaterial" id=8]
+shader = ExtResource( 7 )
+shader_param/lut_size = 16.0
+shader_param/filter_alpha = 1.0
+shader_param/temperature = 0.0
+shader_param/lut = ExtResource( 10 )
+shader_param/cold_lut = ExtResource( 11 )
+shader_param/warm_lut = ExtResource( 8 )
+
 [node name="Spatial" type="Spatial"]
+script = ExtResource( 9 )
 
 [node name="Player" type="KinematicBody" parent="."]
 transform = Transform( -0.195261, 0, 0.980751, 0, 1, 0, -0.980751, 0, -0.195261, 1.66177, 2, 2.35428 )
@@ -153,3 +169,6 @@ shape = SubResource( 4 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 7 )
+
+[node name="ColorGradingFilter" parent="." instance=ExtResource( 5 )]
+material = SubResource( 8 )

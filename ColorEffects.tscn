@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://ColorEffects.gd" type="Script" id=1]
+[ext_resource path="res://color_luts/color_effects.shader" type="Shader" id=2]
+[ext_resource path="res://color_luts/funky.png" type="Texture" id=4]
+[ext_resource path="res://color_luts/hot.png" type="Texture" id=5]
+[ext_resource path="res://color_luts/cold.png" type="Texture" id=6]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/lut_size = 16.0
+shader_param/filter_alpha = 1.0
+shader_param/temperature = 0.0
+shader_param/lut = ExtResource( 4 )
+shader_param/cold_lut = ExtResource( 6 )
+shader_param/warm_lut = ExtResource( 5 )
+
+[node name="ColorGradingFilter" type="ColorRect"]
+material = SubResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+lut = ExtResource( 4 )
+cold_lut = ExtResource( 6 )
+warm_lut = ExtResource( 5 )
