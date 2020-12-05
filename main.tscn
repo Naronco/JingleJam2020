@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://test1.obj" type="ArrayMesh" id=2]
@@ -19,6 +19,9 @@ points = PoolVector3Array( 0.468, 0.468, 0.5, 0.468, -0.468, 0.5, -0.468, 0.468,
 
 [sub_resource type="ConvexPolygonShape" id=4]
 points = PoolVector3Array( -3.045, 2.59, 1.22, -3.045, 0, 1.22, -3.045, 2.59, -1.22, -3.045, 0, -1.22, -3.045, 2.59, -1.22, -3.045, 0, -1.22, 3.045, 2.59, -1.22, 3.045, 0, -1.22, 3.045, 2.59, -1.22, 3.045, 0, -1.22, 3.045, 2.59, 1.22, 3.045, 0, 1.22, 3.045, 2.59, 1.22, 3.045, 0, 1.22, -3.045, 2.59, 1.22, -3.045, 0, 1.22, 3.045, 0, -1.22, -3.045, 0, -1.22, 3.045, 0, 1.22, -3.045, 0, 1.22, -3.045, 2.59, -1.22, 3.045, 2.59, -1.22, -3.045, 2.59, 1.22, 3.045, 2.59, 1.22 )
+
+[sub_resource type="BoxShape" id=11]
+extents = Vector3( 50, 10, 50 )
 
 [sub_resource type="ProceduralSky" id=5]
 sky_top_color = Color( 0.666667, 0.858824, 0.964706, 1 )
@@ -101,11 +104,12 @@ transform = Transform( 1, 0, 0, 0, -1, 0, 0, 0, 1, 0, 20, 0 )
 mesh = ExtResource( 2 )
 material/0 = ExtResource( 3 )
 
-[node name="StaticBody3" type="StaticBody" parent="test2 (mirrored)"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.10948e-07, 0 )
+[node name="Area" type="Area" parent="test2 (mirrored)"]
+space_override = 3
+gravity_vec = Vector3( 0, 1, 0 )
 
-[node name="CollisionShape" type="CollisionShape" parent="test2 (mirrored)/StaticBody3"]
-shape = SubResource( 2 )
+[node name="CollisionShape" type="CollisionShape" parent="test2 (mirrored)/Area"]
+shape = SubResource( 11 )
 
 [node name="RigidBody" type="RigidBody" parent="test2 (mirrored)"]
 transform = Transform( 0.828813, 0, 0.559526, 0, 1, 0, -0.559526, 0, 0.828813, -3.29966, 0.75, 3.42734 )
@@ -118,6 +122,11 @@ material/0 = ExtResource( 3 )
 [node name="CollisionShape" type="CollisionShape" parent="test2 (mirrored)/RigidBody"]
 transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
 shape = SubResource( 3 )
+
+[node name="StaticBody3" type="StaticBody" parent="test2 (mirrored)"]
+
+[node name="CollisionShape" type="CollisionShape" parent="test2 (mirrored)/StaticBody3"]
+shape = SubResource( 2 )
 
 [node name="RigidBody2" type="RigidBody" parent="test2 (mirrored)"]
 transform = Transform( 0.516055, 0, 0.856555, 0, 1, 0, -0.856555, 0, 0.516055, -3.95609, 3.29784, 3.31004 )
