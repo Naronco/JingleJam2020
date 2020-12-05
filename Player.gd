@@ -44,7 +44,7 @@ func _change_gravity(new_gravity):
 	PLAYER_GRAVITY = new_gravity
 	
 	# TODO Use physics server gravity also for player.
-	PhysicsServer.area_set_param(get_world().get_space(), PhysicsServer.AREA_PARAM_GRAVITY_VECTOR, PLAYER_GRAVITY)
+	# PhysicsServer.area_set_param(get_world().get_space(), PhysicsServer.AREA_PARAM_GRAVITY_VECTOR, PLAYER_GRAVITY)
 	
 	# Assume oldGravity and newGravity DO NOT POINT IN THE SAME DIRECTION
 	var rotAxis = oldGravity.cross(PLAYER_GRAVITY).normalized()
@@ -65,7 +65,7 @@ func _flip_gravity():
 	PLAYER_GRAVITY = -PLAYER_GRAVITY
 	
 	# TODO Use physics server gravity also for player.
-	PhysicsServer.area_set_param(get_world().get_space(), PhysicsServer.AREA_PARAM_GRAVITY_VECTOR, PLAYER_GRAVITY)
+	# PhysicsServer.area_set_param(get_world().get_space(), PhysicsServer.AREA_PARAM_GRAVITY_VECTOR, PLAYER_GRAVITY)
 	
 	# In this case, the cross product of old_gravity and new_gravity is zero, so we have to (arbitrarily) pick an axis of rotation and rotate about 180 deg
 	# Choose some perpendicular axis (This method should be stable but rather random)
