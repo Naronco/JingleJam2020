@@ -20,15 +20,15 @@ points = PoolVector3Array( 0.468, 0.468, 0.5, 0.468, -0.468, 0.5, -0.468, 0.468,
 [sub_resource type="ConvexPolygonShape" id=4]
 points = PoolVector3Array( -3.045, 2.59, 1.22, -3.045, 0, 1.22, -3.045, 2.59, -1.22, -3.045, 0, -1.22, -3.045, 2.59, -1.22, -3.045, 0, -1.22, 3.045, 2.59, -1.22, 3.045, 0, -1.22, 3.045, 2.59, -1.22, 3.045, 0, -1.22, 3.045, 2.59, 1.22, 3.045, 0, 1.22, 3.045, 2.59, 1.22, 3.045, 0, 1.22, -3.045, 2.59, 1.22, -3.045, 0, 1.22, 3.045, 0, -1.22, -3.045, 0, -1.22, 3.045, 0, 1.22, -3.045, 0, 1.22, -3.045, 2.59, -1.22, 3.045, 2.59, -1.22, -3.045, 2.59, 1.22, 3.045, 2.59, 1.22 )
 
-[sub_resource type="BoxShape" id=11]
+[sub_resource type="BoxShape" id=5]
 extents = Vector3( 50, 10, 50 )
 
-[sub_resource type="ProceduralSky" id=5]
+[sub_resource type="ProceduralSky" id=6]
 sky_top_color = Color( 0.666667, 0.858824, 0.964706, 1 )
 
-[sub_resource type="Environment" id=6]
+[sub_resource type="Environment" id=7]
 background_mode = 2
-background_sky = SubResource( 5 )
+background_sky = SubResource( 6 )
 fog_enabled = true
 fog_depth_begin = 5.0
 fog_depth_end = 77.4
@@ -109,7 +109,7 @@ space_override = 3
 gravity_vec = Vector3( 0, 1, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="test2 (mirrored)/Area"]
-shape = SubResource( 11 )
+shape = SubResource( 5 )
 
 [node name="RigidBody" type="RigidBody" parent="test2 (mirrored)"]
 transform = Transform( 0.828813, 0, 0.559526, 0, 1, 0, -0.559526, 0, 0.828813, -3.29966, 0.75, 3.42734 )
@@ -152,4 +152,4 @@ material/0 = ExtResource( 3 )
 shape = SubResource( 4 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 6 )
+environment = SubResource( 7 )
