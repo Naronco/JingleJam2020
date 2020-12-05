@@ -10,6 +10,11 @@ export(float) var walkingSpeed = 6.0
 export(float) var mouseSensitivity = 0.002
 
 var PLAYER_GRAVITY = Vector3(0, -9.8, 0)
+
+var SLERP_TIME = 0.5 # in seconds
+var lastBasis
+var basisSlerping = false
+var basisSlerpTime = 0.0 # in seconds
 var targetBasis
 
 var velocity = Vector3(0, 0, 0)
@@ -28,6 +33,9 @@ func _ready():
 
 # new_gravity IS NOT parallel to old_gravity
 func _change_gravity(new_gravity):
+	if basisSlerping:
+		pass
+	
 	var oldGravity = PLAYER_GRAVITY
 	PLAYER_GRAVITY = new_gravity
 	
@@ -39,10 +47,16 @@ func _change_gravity(new_gravity):
 	var rotAngle = acos(oldGravity.normalized().dot(PLAYER_GRAVITY.normalized()))
 
 	# Rotate basis
+	lastBasis = transform.basis
 	targetBasis = transform.basis.rotated(rotAxis, rotAngle)
+	basisSlerping = true
+	basisSlerpTime = 0.0
 
 # g -> -g
 func _flip_gravity():
+	if basisSlerping:
+		pass
+
 	var oldGravity = PLAYER_GRAVITY
 	PLAYER_GRAVITY = -PLAYER_GRAVITY
 	
@@ -55,7 +69,10 @@ func _flip_gravity():
 	var rotAxis = Vector3(up.y, -up.x, 0) if up.z < up.x else Vector3(0, -up.z, up.y)
 	var rotAngle = PI
 	
+	lastBasis = transform.basis
 	targetBasis = transform.basis.rotated(rotAxis, rotAngle)
+	basisSlerping = true
+	basisSlerpTime = 0.0
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -82,11 +99,16 @@ func _physics_process(delta):
 		input_movement_vector.x += 1
 		
 	# DEBUG ACTION
-	if Input.is_action_just_pressed("debug"):
+	if not basisSlerping and Input.is_action_just_pressed("debug"):
 		_flip_gravity()
 
-	# TODO: THIS IS NOT FRAMERATE INDEPENDENT, PLEASE FIX BEFORE RELEASE
-	transform.basis = transform.basis.slerp(targetBasis, 10 * delta)
+	if basisSlerping:
+		basisSlerpTime += delta
+		if basisSlerpTime >= SLERP_TIME:
+			basisSlerpTime = SLERP_TIME
+			basisSlerping = false
+
+		transform.basis = lastBasis.slerp(targetBasis, basisSlerpTime / SLERP_TIME)
 
 	input_movement_vector = input_movement_vector.normalized()
 	
