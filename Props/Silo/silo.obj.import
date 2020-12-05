@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/silo.obj-4a7fc4f2a8e0e0197fda6750722c147b.mesh"
+
+[deps]
+
+files=[ "res://.import/silo.obj-4a7fc4f2a8e0e0197fda6750722c147b.mesh" ]
+
+source_file="res://Props/Silo/silo.obj"
+dest_files=[ "res://.import/silo.obj-4a7fc4f2a8e0e0197fda6750722c147b.mesh", "res://.import/silo.obj-4a7fc4f2a8e0e0197fda6750722c147b.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
