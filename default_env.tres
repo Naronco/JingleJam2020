@@ -1,17 +1,7 @@
 [gd_resource type="Environment" load_steps=2 format=2]
 
-[sub_resource type="ProceduralSky" id=4]
-sky_top_color = Color( 0.666667, 0.858824, 0.964706, 1 )
+[sub_resource type="ProceduralSky" id=1]
 
 [resource]
 background_mode = 2
-background_sky = SubResource( 4 )
-fog_enabled = true
-fog_depth_begin = 5.0
-fog_depth_end = 77.4
-fog_depth_curve = 1.7411
-ss_reflections_enabled = true
-ss_reflections_max_steps = 128
-ss_reflections_fade_in = 0.219613
-ss_reflections_depth_tolerance = 0.1
-ssao_enabled = true
+background_sky = SubResource( 1 )
