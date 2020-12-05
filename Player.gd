@@ -57,7 +57,7 @@ func _change_gravity(new_gravity):
 	basisSlerpTime = 0.0
 
 # g -> -g
-func _flip_gravity():
+func flip_gravity():
 	if basisSlerping:
 		pass
 
@@ -104,7 +104,7 @@ func _physics_process(delta):
 		
 	# DEBUG ACTION
 	if not basisSlerping and Input.is_action_just_pressed("debug"):
-		_flip_gravity()
+		flip_gravity()
 
 	if basisSlerping:
 		basisSlerpTime += delta
