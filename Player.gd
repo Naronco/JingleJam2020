@@ -230,6 +230,10 @@ func _physics_process(delta):
 			crushTime = 0.0
 			wasCrushed = false
 
+func knockback(vec):
+	var up = -PLAYER_GRAVITY.normalized()
+	velocity = velocity.dot(up) * up + (velocity - velocity.dot(up) * up + vec - vec.dot(up) * up)
+
 func is_heavy(collider):
 	if collider.get_class() == "StaticBody":
 		return true
@@ -263,11 +267,11 @@ func _input(event):
 		if inGame:
 			camera.rotate_x(-event.relative.y * mouseSensitivity)
 			rotationHelper.rotate_y(-event.relative.x * mouseSensitivity)
-
-			var camera_rot = camera.rotation_degrees
-			print(camera_rot.x)
-			camera_rot.x = clamp(camera_rot.x, -85, 85)
-			$RotationHelper/Camera.set_rotation_degrees(camera_rot)
+			var cam_rot = camera.rotation_degrees
+			cam_rot.x = clamp(cam_rot.x, -87.5, 87.5)
+			cam_rot.y = 0
+			cam_rot.z = 0
+			camera.rotation_degrees = cam_rot
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
