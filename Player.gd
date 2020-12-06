@@ -179,8 +179,22 @@ func _physics_process(delta):
 			print(collision.get_collider().velocity)
 			collision.get_collider().velocity += -collision.normal * 2
 		if collision.collider.has_method("apply_central_impulse"):
-			print("Pushing")
+			# print("Pushing")
 			collision.collider.apply_central_impulse(-collision.normal * velocity.length() * push)
+	
+	for i in get_slide_count():
+		var ci = get_slide_collision(i)
+		for j in i:
+			var cj = get_slide_collision(j)
+			
+			# Assume that ci.normal and cj.normal are properly normalized
+			var d = ci.normal.dot(cj.normal)
+
+			var bothHeavy = ci.collider.get_class() == "StaticBody" and cj.collider.get_class() == "StaticBody"
+
+			var threshold = -0.95
+			if d < threshold and ci.collider_velocity.dot(cj.collider_velocity) <= 0 and bothHeavy:
+				print("CRUSH!")
 
 func _input(event):
 	# Mouse in viewport coordinates.
