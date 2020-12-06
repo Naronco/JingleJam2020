@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Props/Silo/silo.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://spritesheet.tres" type="Material" id=2]
+
+[sub_resource type="CylinderShape" id=1]
+radius = 3.00262
+height = 5.39764
+
+[node name="silo" type="MeshInstance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9139, -0.0147096, 17.3473 )
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.67569, 0 )
+shape = SubResource( 1 )
