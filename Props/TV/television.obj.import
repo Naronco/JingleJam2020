@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/television.obj-3a149f12963044519d7312f3b26a5a04.mesh"
+
+[deps]
+
+files=[ "res://.import/television.obj-3a149f12963044519d7312f3b26a5a04.mesh" ]
+
+source_file="res://Props/TV/television.obj"
+dest_files=[ "res://.import/television.obj-3a149f12963044519d7312f3b26a5a04.mesh", "res://.import/television.obj-3a149f12963044519d7312f3b26a5a04.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

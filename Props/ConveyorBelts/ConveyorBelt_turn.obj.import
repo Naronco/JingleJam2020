@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/ConveyorBelt_turn.obj-d2925314e4a392c868a9d056198440bb.mesh"
+
+[deps]
+
+files=[ "res://.import/ConveyorBelt_turn.obj-d2925314e4a392c868a9d056198440bb.mesh" ]
+
+source_file="res://Props/ConveyorBelts/ConveyorBelt_turn.obj"
+dest_files=[ "res://.import/ConveyorBelt_turn.obj-d2925314e4a392c868a9d056198440bb.mesh", "res://.import/ConveyorBelt_turn.obj-d2925314e4a392c868a9d056198440bb.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
