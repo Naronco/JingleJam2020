@@ -250,8 +250,9 @@ func _input(event):
 			rotationHelper.rotate_y(-event.relative.x * mouseSensitivity)
 
 			var camera_rot = camera.rotation_degrees
-			camera_rot.x = clamp(camera_rot.x, -90, 90)
-			camera.rotation_degrees = camera_rot
+			print(camera_rot.x)
+			camera_rot.x = clamp(camera_rot.x, -85, 85)
+			$RotationHelper/Camera.set_rotation_degrees(camera_rot)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
