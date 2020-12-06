@@ -32,7 +32,7 @@ func _physics_process(delta):
 	
 	if lastWalkDirChangeTime >= newDirTime:
 		var angle = rng.randf_range(0, 2 * PI)
-		randomWalkDir = Vector3(cos(angle), 0, sin(angle)) * rng.randf_range(0.5, 2)
+		randomWalkDir = Vector3(cos(angle), 0, sin(angle)) * rng.randf_range(0.5, 2) * 2
 		lastWalkDirChangeTime = 0.0
 		newDirTime = rng.randf_range(0.5, 2.0)
 		
@@ -42,7 +42,7 @@ func _physics_process(delta):
 
 	# Assume randomWalkDir is parallel to gravity
 	velUp += gravityDir * gravityStrength * delta
-	velPlane = randomWalkDir
+	velPlane += randomWalkDir * delta - 2 * velPlane * delta
 	velocity = velUp + velPlane
 	velocity = move_and_slide(velocity, up)
 

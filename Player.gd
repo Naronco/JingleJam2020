@@ -36,6 +36,11 @@ export(int) var crushDmg = 2
 var crushTime = 0.0
 var wasCrushed = false
 
+const MAX_HEALTH = 10
+export(int) var health = MAX_HEALTH
+
+var collectedPresents : int = 0
+
 # Actually equivalent to Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED right now.
 var inGame = false
 
@@ -91,9 +96,18 @@ func flip_gravity():
 	basisSlerpTime = 0.0
 
 func do_damage(source, dmg):
-	# TODO Take damage
+	health -= dmg
+	if health > 10:
+		health = 10
+	elif health <= 0:
+		health = 0
+		# TODO Die
+	var healthBar = get_parent().find_node("GUI").find_node("HealthBar")
+	healthBar.set_health(health)
 	print("Taking", dmg, "damage, got hit by", source.get_name())
-	pass
+
+func collect_present(source):
+	collectedPresents += 1
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -223,14 +237,13 @@ func is_heavy(collider):
 	return false
 
 func shoot():
+	var up = -PLAYER_GRAVITY.normalized()
 	var paintball = Paintball.instance()
 	paintball.gravity = PLAYER_GRAVITY
 	paintball.direction = -camera.global_transform.basis.z
-	paintball.transform.origin = $RotationHelper/Camera/gun.global_transform.origin - camera.global_transform.origin + camera.transform.origin + Vector3(0, 0.1, 0)
-	paintball.transform.origin += paintball.direction * 0.15
-	paintball.direction.y += 0.05
+	paintball.transform.origin = $RotationHelper/Camera/gun.transform.origin + Vector3(0, 0.1, 0)
 	add_collision_exception_with(paintball)
-	add_child(paintball)
+	$RotationHelper/Camera.add_child(paintball)
 	shootWait = shootCooldown
 
 func _input(event):
