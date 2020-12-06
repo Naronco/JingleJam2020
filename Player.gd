@@ -228,6 +228,10 @@ func _physics_process(delta):
 			crushTime = 0.0
 			wasCrushed = false
 
+func knockback(vec):
+	var up = -PLAYER_GRAVITY.normalized()
+	velocity = velocity.dot(up) * up + (velocity - velocity.dot(up) * up + vec - vec.dot(up) * up)
+
 func is_heavy(collider):
 	if collider.get_class() == "StaticBody":
 		return true
