@@ -223,14 +223,13 @@ func is_heavy(collider):
 	return false
 
 func shoot():
+	var up = -PLAYER_GRAVITY.normalized()
 	var paintball = Paintball.instance()
 	paintball.gravity = PLAYER_GRAVITY
 	paintball.direction = -camera.global_transform.basis.z
-	paintball.transform.origin = $RotationHelper/Camera/gun.global_transform.origin - camera.global_transform.origin + camera.transform.origin + Vector3(0, 0.1, 0)
-	paintball.transform.origin += paintball.direction * 0.15
-	paintball.direction.y += 0.05
+	paintball.transform.origin = $RotationHelper/Camera/gun.transform.origin + Vector3(0, 0.1, 0)
 	add_collision_exception_with(paintball)
-	add_child(paintball)
+	$RotationHelper/Camera.add_child(paintball)
 	shootWait = shootCooldown
 
 func _input(event):
