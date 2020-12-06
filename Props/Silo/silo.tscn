@@ -9,6 +9,7 @@ height = 5.39764
 
 [node name="silo" type="MeshInstance"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9139, -0.0147096, 17.3473 )
+material_override = ExtResource( 2 )
 mesh = ExtResource( 1 )
 material/0 = ExtResource( 2 )
 
