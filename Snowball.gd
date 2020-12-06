@@ -13,19 +13,21 @@ var timeSinceSpawn = 0.0 # in s
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("Instantiated snowball")
 	connect("body_entered", self, "_on_body_enter")
 
 func _on_body_enter(body):
-	print("Entered")
 	if body.get_name() == "Player":
 		body.do_damage(self, damage)
 	
 	# Play snowball destroy anim
-	print("Deleting snowball")
 	queue_free()
 
-func _process(delta):
+func _physics_process(delta):
+	var gravityDir = PhysicsServer.area_get_param(get_world().get_space(), PhysicsServer.AREA_PARAM_GRAVITY_VECTOR)
+	var gravityStrength = PhysicsServer.area_get_param(get_world().get_space(), PhysicsServer.AREA_PARAM_GRAVITY)
+
+	velocity += gravityDir * gravityStrength * delta
+
 	transform.origin += delta * velocity
 	
 	timeSinceSpawn += delta

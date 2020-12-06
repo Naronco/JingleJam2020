@@ -5,7 +5,7 @@ extends KinematicBody
 # var a = 2
 # var b = "text"
 
-export(float) var jumpVel = 5.0
+export(float) var jumpVel = 6.0
 export(float) var walkingSpeed = 6.0
 export(float) var mouseSensitivity = 0.002
 
@@ -133,6 +133,8 @@ func _physics_process(delta):
 	walkingDir -= up.dot(walkingDir) * up
 	walkingDir = walkingDir.normalized()
 
+	var airFrictionCoeff = 1.3
+	
 	if is_on_floor():
 		# target is perpendicular to gravity
 		var target = walkingSpeed * walkingDir
@@ -152,13 +154,13 @@ func _physics_process(delta):
 		velocity = planeVel + upVel
 	else:
 		var airAccel = 10
-		var airFrictionCoeff = 2
 		# Treat movement input from user as force change, not as velocity, when not on floor
 		var upVel = velocity.dot(up) * up
 		var planeVel = velocity - upVel
 		velocity = upVel + (planeVel - airFrictionCoeff * planeVel * delta + walkingDir * delta * airAccel)
 
-	velocity += PLAYER_GRAVITY * delta
+	var upVel = velocity.dot(up) * up
+	velocity += (PLAYER_GRAVITY - upVel * airFrictionCoeff * 0.3) * delta 
 
 	if is_on_floor():
 		velocityBeforeJump = Vector3()

@@ -2,21 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/spritesheet_col.png-c4a994e9914a8b89bc48fb0e10d87a5d.s3tc.stex"
-path.etc2="res://.import/spritesheet_col.png-c4a994e9914a8b89bc48fb0e10d87a5d.etc2.stex"
+path="res://.import/spritesheet_col.png-c4a994e9914a8b89bc48fb0e10d87a5d.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2" ],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://spritesheet_col.png"
-dest_files=[ "res://.import/spritesheet_col.png-c4a994e9914a8b89bc48fb0e10d87a5d.s3tc.stex", "res://.import/spritesheet_col.png-c4a994e9914a8b89bc48fb0e10d87a5d.etc2.stex" ]
+dest_files=[ "res://.import/spritesheet_col.png-c4a994e9914a8b89bc48fb0e10d87a5d.stex" ]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
