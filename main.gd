@@ -15,8 +15,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	time += delta
-	$ColorGradingFilter.temperature = sin(time)
-	$ColorGradingFilter.update()
+	#$ColorGradingFilter.temperature = sin(time)
+	#$ColorGradingFilter.update()
 
 
 func _on_rubberduck_arrived_at_port():
