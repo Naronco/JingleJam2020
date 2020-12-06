@@ -4,8 +4,8 @@
 [ext_resource path="res://GingerbreadMan.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape" id=1]
-radius = 0.3
-height = 0.6
+radius = 0.471097
+height = 0.253558
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 18
@@ -53,5 +53,4 @@ material_override = SubResource( 4 )
 pixel_size = 0.0625
 billboard = 2
 frames = SubResource( 7 )
-frame = 1
 playing = true

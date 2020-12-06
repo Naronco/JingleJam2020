@@ -18,6 +18,8 @@ var velocity = Vector3()
 var attacked = false
 var attackCooldown = 0.0
 
+const CollapsedGingerbreadMan = preload("res://CollapsedGingerbreadMan.tscn")
+
 func _ready():
 	rng.randomize()
 	lastThrowTime = rng.randf_range(-1, 0)
@@ -68,7 +70,7 @@ func _physics_process(delta):
 				velUp = up * jumpVel
 				lastWalkDirChangeTime = 0.0
 				velPlane = collision.normal * 5
-				collision.collider.knockback(-collision.normal * 15)
+				collision.collider.knockback(-collision.normal * 20)
 	else:
 		attackCooldown -= delta
 		if attackCooldown <= 0:
@@ -79,6 +81,20 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity, up)
 
 func hit_by_paintball(paintball):
+	var collapsed = CollapsedGingerbreadMan.instance()
+	collapsed.transform.origin = transform.origin
+	get_parent().add_child(collapsed)
+		
+	var randDir1 = Vector3(rng.randf_range(-1, 1), rng.randf_range(-0.5, 0.5), rng.randf_range(-1, 1)) * 3.0
+	var randDir2 = Vector3(rng.randf_range(-1, 1), rng.randf_range(-0.5, 0.5), rng.randf_range(-1, 1)) * 3.0
+	var randDir3 = Vector3(rng.randf_range(-1, 1), rng.randf_range(-0.5, 0.5), rng.randf_range(-1, 1)) * 3.0
+	var randDir4 = Vector3(rng.randf_range(-1, 1), rng.randf_range(-0.5, 0.5), rng.randf_range(-1, 1)) * 3.0
+	
+	collapsed.get_node("Part").apply_central_impulse(randDir1)
+	collapsed.get_node("Part2").apply_central_impulse(randDir2)
+	collapsed.get_node("Part3").apply_central_impulse(randDir3)
+	collapsed.get_node("Part4").apply_central_impulse(randDir4)
+
 	queue_free()
 
 

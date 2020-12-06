@@ -18,6 +18,10 @@ func _ready():
 func _on_body_enter(body):
 	if body.get_name() == "Player":
 		body.do_damage(self, damage)
+		var knockbackDir = body.global_transform.origin - global_transform.origin
+		knockbackDir.y = 0
+		if knockbackDir.length_squared() > 0.01:
+			body.knockback(knockbackDir.normalized() * 20)
 	
 	# Play snowball destroy anim
 	queue_free()
