@@ -139,7 +139,7 @@ func _physics_process(delta):
 		input_movement_vector.x -= 1
 	if Input.is_action_pressed("movement_right"):
 		input_movement_vector.x += 1
-	if Input.is_action_pressed("win"):
+	if Input.is_action_pressed("win") && GlobalState.presents >= GlobalState.numPresents:
 		get_tree().change_scene("res://Win.tscn")
 		return
 
