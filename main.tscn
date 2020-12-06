@@ -758,10 +758,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1643, 4.06407, 29.0443 )
 [node name="ControlRoom" type="Spatial" parent="ControlRoomAndReactor"]
 
 [node name="ControlPanel" type="MeshInstance" parent="ControlRoomAndReactor/ControlRoom"]
+material_override = ExtResource( 3 )
 mesh = ExtResource( 32 )
 material/0 = null
 
 [node name="television" parent="ControlRoomAndReactor/ControlRoom/ControlPanel" instance=ExtResource( 31 )]
+transform = Transform( 0.673245, 0, -0.73942, 0, 1, 0, 0.73942, 0, 0.673245, -1.49109, 0.662547, -1.00091 )
 material/0 = null
 
 [node name="silo" parent="ControlRoomAndReactor" instance=ExtResource( 33 )]
