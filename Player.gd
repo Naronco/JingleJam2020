@@ -247,8 +247,8 @@ func shoot():
 	var paintball = Paintball.instance()
 	paintball.gravity = PLAYER_GRAVITY
 	paintball.direction = -camera.global_transform.basis.z
-	paintball.transform.origin = $RotationHelper/Camera/gun.transform.origin + Vector3(0, 0.1, 0)
-	$RotationHelper/Camera.add_child(paintball)
+	paintball.global_transform.origin = $RotationHelper/Camera/gun.global_transform.origin + camera.global_transform.basis.y * 0.1
+	get_parent().add_child(paintball)
 	add_collision_exception_with(paintball)
 	shootWait = shootCooldown
 

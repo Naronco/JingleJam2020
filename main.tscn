@@ -415,7 +415,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.9222, 1.96763, 3.64672 )
 [node name="ChristmasTree" parent="test1" instance=ExtResource( 23 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2597, 1, 3.22683 )
 
-[node name="GingerbreadMan" parent="test1" instance=ExtResource( 22 )]
+[node name="GingerbreadMan" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 22 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.958, 2, -2.881 )
 
 [node name="ConveyorBelt_full" parent="test1" instance=ExtResource( 17 )]
@@ -433,6 +435,7 @@ environment = SubResource( 5 )
 
 [node name="ColorGradingFilter" parent="." instance=ExtResource( 5 )]
 material = SubResource( 6 )
+temperature = 0.0
 
 [node name="rubberduck" parent="." instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 92.1, -6, -90.9 )
