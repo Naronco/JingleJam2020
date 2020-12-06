@@ -21,19 +21,19 @@ params_use_alpha_scissor = true
 params_alpha_scissor_threshold = 0.98
 albedo_texture = SubResource( 3 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=5]
 flags = 18
 atlas = ExtResource( 1 )
 region = Rect2( 96, 32, 16, 32 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=6]
 flags = 18
 atlas = ExtResource( 1 )
 region = Rect2( 112, 32, 16, 32 )
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
-"frames": [ SubResource( 8 ), SubResource( 9 ) ],
+"frames": [ SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
 "name": "default",
 "speed": 0.8
@@ -52,5 +52,4 @@ material_override = SubResource( 4 )
 pixel_size = 0.0625
 billboard = 2
 frames = SubResource( 7 )
-frame = 1
 playing = true
