@@ -10,8 +10,8 @@ const Containerz = preload("res://Container.tscn")
 const CONTAINER_WIDTH = 6.09
 const CONTAINER_HEIGHT = 2.59
 const CONTAINER_DEPTH = 2.44
-const ROW_PADDING = 1.5
-const COLUMN_PADDING = 5.0 / 16
+export (float) var ROW_PADDING = 1.5
+export (float) var COLUMN_PADDING = 5.0 / 16
 
 class ContainerSpot:
 	var index: int
@@ -45,7 +45,6 @@ func random_generate():
 		if spot == null:
 			break
 		spot.container = Containerz.instance()
-		add_child(spot.container)
 		put_container(spot)
 
 func get_pos(i: int, stackNum = 0):
@@ -84,5 +83,9 @@ func put_container(spot: ContainerSpot):
 
 	spot.position = get_pos(spot.index, stacks[spot.index].size())
 	spot.container.transform.origin = spot.position
+	var parent = spot.container.get_parent()
+	if parent != null:
+		parent.remove_child(spot.container)
+	add_child(spot.container)
 	stacks[spot.index].append(spot)
 	return spot

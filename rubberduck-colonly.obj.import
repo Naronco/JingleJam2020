@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/rubberduck-colonly.obj-61fd21ef4ba0da2d4117e6413b535f36.mesh"
+
+[deps]
+
+files=[ "res://.import/rubberduck-colonly.obj-61fd21ef4ba0da2d4117e6413b535f36.mesh" ]
+
+source_file="res://rubberduck-colonly.obj"
+dest_files=[ "res://.import/rubberduck-colonly.obj-61fd21ef4ba0da2d4117e6413b535f36.mesh", "res://.import/rubberduck-colonly.obj-61fd21ef4ba0da2d4117e6413b535f36.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

@@ -17,6 +17,7 @@ var sideways_axis = AnimatedAxis.new()
 var vertical_axis = AnimatedAxis.new(IDLE_HEIGHT)
 var extension_axis = AnimatedAxis.new()
 var hooked = null
+var hooked_offset = Vector3(0, 0, 0)
 
 func _physics_process(delta):
 	var x = extension_axis.update(delta)
@@ -28,7 +29,7 @@ func _physics_process(delta):
 	$KinematicBody/PlayerDropArea.transform.origin = Vector3(x, 0, 0)
 
 	if hooked != null:
-		hooked.transform.origin = Vector3(x, y, z)
+		hooked.transform.origin = Vector3(x, y, z) - hooked_offset
 
 const IDLE_MIN_S = 0.250
 const IDLE_MAX_S = 2.5
@@ -54,12 +55,14 @@ func find_ship_container():
 func find_ship_deposit():
 	pass
 
-func _pickup(picker, from):
+func _pickup(picker, from, offset = Vector3(0, 0, 0)):
 	if from == null || from.container == null:
 		vertical_axis.move_to(IDLE_HEIGHT)
 		if vertical_axis.moving:
 			yield(vertical_axis, "done")
 		return null
+
+	from.position += offset
 
 	extension_axis.move_to(from.position.x)
 	sideways_axis.move_to(from.position.z)
@@ -74,6 +77,8 @@ func _pickup(picker, from):
 
 	yield(random_idle(), "timeout")
 	from = picker.obtain(from)
+	from.position += offset
+
 	if from == null || from.container == null:
 		vertical_axis.move_to(IDLE_HEIGHT)
 		if vertical_axis.moving:
@@ -82,6 +87,7 @@ func _pickup(picker, from):
 
 	hooked = from.container
 	hooked.mode = RigidBody.MODE_KINEMATIC
+	hooked_offset = offset
 
 	vertical_axis.move_to(IDLE_HEIGHT)
 	if vertical_axis.moving:
@@ -89,9 +95,11 @@ func _pickup(picker, from):
 
 	return from
 
-func _deposit(deposit, put):
+func _deposit(deposit, put, offset = Vector3(0, 0, 0)):
 	if hooked == null:
 		return
+
+	put.position += offset
 
 	sideways_axis.move_to(put.position.z)
 	extension_axis.move_to(put.position.x)
@@ -116,8 +124,9 @@ func _deposit(deposit, put):
 	put.container = hooked
 	deposit.put_container(put)
 	hooked.mode = RigidBody.MODE_STATIC
-	yield(random_idle(), "timeout")
 	hooked = null
+	hooked_offset = Vector3(0, 0, 0)
+	yield(random_idle(), "timeout")
 
 	vertical_axis.move_to(IDLE_HEIGHT)
 	if vertical_axis.moving:
@@ -136,6 +145,8 @@ func _animate():
 		yield(get_tree().create_timer(5), "timeout")
 		return
 
+	var offset = picker.global_transform.origin - deposit.global_transform.origin
+
 	# (index, position, container)
 	var from = picker.find_topmost_container()
 
@@ -144,7 +155,7 @@ func _animate():
 	#  0) pick random + crane down
 	#  1) hold / pickup
 	#  2) crane up + deposit random
-	yield(_pickup(picker, from), "completed")
+	yield(_pickup(picker, from, offset), "completed")
 	if hooked == null:
 		return
 
@@ -164,7 +175,7 @@ func _animate():
 	#  8) crane up + crane backward
 	#  9) deposit random
 	put = picker.find_container_spot()
-	yield(_deposit(picker, put), "completed")
+	yield(_deposit(picker, put, offset), "completed")
 
 
 
@@ -172,3 +183,4 @@ func _on_PlayerDropArea_body_entered(body):
 	if body.get_name() == "Player" and hooked != null and vertical_axis.value > 3 and randf() < 0.4:
 		hooked.mode = RigidBody.MODE_RIGID
 		hooked = null
+		hooked_offset = Vector3(0, 0, 0)
