@@ -31,6 +31,11 @@ var camera
 var shooting = false
 var shootWait = 0.0
 
+export(float) var crushCooldown = 0.25
+export(int) var crushDmg = 2
+var crushTime = 0.0
+var wasCrushed = false
+
 # Actually equivalent to Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED right now.
 var inGame = false
 
@@ -187,19 +192,35 @@ func _physics_process(delta):
 			# print("Pushing")
 			collision.collider.apply_central_impulse(-collision.normal * velocity.length() * push)
 	
-	for i in get_slide_count():
-		var ci = get_slide_collision(i)
-		for j in i:
-			var cj = get_slide_collision(j)
-			
-			# Assume that ci.normal and cj.normal are properly normalized
-			var d = ci.normal.dot(cj.normal)
+	if not wasCrushed:
+		for i in get_slide_count():
+			var ci = get_slide_collision(i)
+			for j in i:
+				var cj = get_slide_collision(j)
+				
+				# Assume that ci.normal and cj.normal are properly normalized
+				var d = ci.normal.dot(cj.normal)
 
-			var bothHeavy = ci.collider.get_class() == "StaticBody" and cj.collider.get_class() == "StaticBody"
+				var bothHeavy = is_heavy(ci.collider) and is_heavy(cj.collider)
 
-			var threshold = -0.95
-			if d < threshold and ci.collider_velocity.dot(cj.collider_velocity) <= 0 and bothHeavy:
-				print("CRUSH!")
+				var threshold = -0.9
+				if d < threshold and bothHeavy:
+					print("CRUSH!")
+					wasCrushed = true
+					# do_damage(ci.collider, crushDmg)
+	else:
+		crushTime += delta
+		if crushTime >= crushCooldown:
+			crushTime = 0.0
+			wasCrushed = false
+
+func is_heavy(collider):
+	if collider.get_class() == "StaticBody":
+		return true
+	if collider.get_class() == "RigidBody":
+		if collider.mass > 10 or collider.mode == RigidBody.MODE_STATIC:
+			return true
+	return false
 
 func shoot():
 	var paintball = Paintball.instance()

@@ -1,10 +1,6 @@
 extends Area
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
+var elapsedTime = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,6 +12,6 @@ func _on_body_enter(body):
 		body.flip_gravity()
 		queue_free()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	elapsedTime += delta
+	$Sprite3D.transform.origin.y = 0.1 + 0.1 * sin(4 * elapsedTime)

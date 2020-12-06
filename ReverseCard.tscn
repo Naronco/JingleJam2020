@@ -34,3 +34,6 @@ texture = SubResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 4 )
+
+[node name="OmniLight" type="OmniLight" parent="."]
+light_indirect_energy = 0.0
