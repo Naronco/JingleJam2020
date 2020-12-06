@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/crane_seat.obj-54d6a088dcac774ee1b0f1b10726da89.mesh"
+
+[deps]
+
+files=[ "res://.import/crane_seat.obj-54d6a088dcac774ee1b0f1b10726da89.mesh" ]
+
+source_file="res://crane_seat.obj"
+dest_files=[ "res://.import/crane_seat.obj-54d6a088dcac774ee1b0f1b10726da89.mesh", "res://.import/crane_seat.obj-54d6a088dcac774ee1b0f1b10726da89.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

@@ -23,7 +23,9 @@ func _physics_process(delta):
 	var y = vertical_axis.update(delta)
 	var z = sideways_axis.update(delta)
 	$KinematicBody.transform.origin = Vector3(0, 0, z)
-	$KinematicBody/Picker.transform.origin = Vector3(x, y + 2.59, 0)
+	$KinematicBody/Picker.transform.origin = Vector3(x, y, 0)
+	$KinematicBody/Seat.transform.origin = Vector3(x, 0, 0)
+	$KinematicBody/PlayerDropArea.transform.origin = Vector3(x, 0, 0)
 
 	if hooked != null:
 		hooked.transform.origin = Vector3(x, y, z)
@@ -53,6 +55,12 @@ func find_ship_deposit():
 	pass
 
 func _pickup(picker, from):
+	if from == null || from.container == null:
+		vertical_axis.move_to(IDLE_HEIGHT)
+		if vertical_axis.moving:
+			yield(vertical_axis, "done")
+		return null
+
 	extension_axis.move_to(from.position.x)
 	sideways_axis.move_to(from.position.z)
 	if extension_axis.moving:
@@ -73,6 +81,7 @@ func _pickup(picker, from):
 		return null
 
 	hooked = from.container
+	hooked.mode = RigidBody.MODE_KINEMATIC
 
 	vertical_axis.move_to(IDLE_HEIGHT)
 	if vertical_axis.moving:
@@ -88,15 +97,25 @@ func _deposit(deposit, put):
 	extension_axis.move_to(put.position.x)
 	if sideways_axis.moving:
 		yield(sideways_axis, "done")
-
-	vertical_axis.move_to(put.position.y)
 	if extension_axis.moving:
 		yield(extension_axis, "done")
+
+	if hooked == null:
+		return
+
+	vertical_axis.move_to(put.position.y)
 	if vertical_axis.moving:
 		yield(vertical_axis, "done")
 
+	if hooked == null:
+		vertical_axis.move_to(IDLE_HEIGHT)
+		if vertical_axis.moving:
+			yield(vertical_axis, "done")
+		return
+
 	put.container = hooked
 	deposit.put_container(put)
+	hooked.mode = RigidBody.MODE_STATIC
 	yield(random_idle(), "timeout")
 	hooked = null
 
@@ -105,9 +124,17 @@ func _deposit(deposit, put):
 		yield(vertical_axis, "done")
 
 func _animate():
+	if pickupField == null:
+		yield(get_tree().create_timer(5), "timeout")
+		return
+
 	# ContainerField
 	var picker = get_node(pickupField)
 	var deposit = get_node(depositField)
+	
+	if picker == null:
+		yield(get_tree().create_timer(5), "timeout")
+		return
 
 	# (index, position, container)
 	var from = picker.find_topmost_container()
@@ -118,6 +145,8 @@ func _animate():
 	#  1) hold / pickup
 	#  2) crane up + deposit random
 	yield(_pickup(picker, from), "completed")
+	if hooked == null:
+		return
 
 	#  3) crane forward + crane down
 	#  4) hold / unload
@@ -129,9 +158,17 @@ func _animate():
 	#  7) hold / pickup
 	from = deposit.find_topmost_container()
 	yield(_pickup(deposit, from), "completed")
+	if hooked == null:
+		return
 
 	#  8) crane up + crane backward
 	#  9) deposit random
 	put = picker.find_container_spot()
 	yield(_deposit(picker, put), "completed")
 
+
+
+func _on_PlayerDropArea_body_entered(body):
+	if body.get_name() == "Player" and hooked != null and vertical_axis.value > 3 and randf() < 0.4:
+		hooked.mode = RigidBody.MODE_RIGID
+		hooked = null

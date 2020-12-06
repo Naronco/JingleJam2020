@@ -358,14 +358,14 @@ transform = Transform( 0.971359, 0, 0.237618, 0, 1, 0, -0.237618, 0, 0.971359, 2
 [node name="Snowman" parent="test1" groups=[
 "Enemies",
 ] instance=ExtResource( 13 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.545, 1.51215, 8.23452 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.345, 1.51215, 12.3345 )
 
 [node name="ContainerField" parent="test1" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 65.4, 0.5, 9.5 )
 numRows = 4
 containersPerRow = 7
 stackHeight = 4
-numGenerateContainers = 24
+numGenerateContainers = 6
 
 [node name="Crane" parent="test1" instance=ExtResource( 15 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 65.4, 0.5, 9.5 )

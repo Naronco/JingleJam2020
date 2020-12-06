@@ -11,7 +11,7 @@ const CONTAINER_WIDTH = 6.09
 const CONTAINER_HEIGHT = 2.59
 const CONTAINER_DEPTH = 2.44
 const ROW_PADDING = 1.5
-const COLUMN_PADDING = 1.0 / 16
+const COLUMN_PADDING = 5.0 / 16
 
 class ContainerSpot:
 	var index: int
