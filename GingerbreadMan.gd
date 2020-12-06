@@ -78,6 +78,9 @@ func _physics_process(delta):
 	velocity = velUp + velPlane
 	velocity = move_and_slide(velocity, up)
 
+func hit_by_paintball(paintball):
+	queue_free()
+
 
 func set_player(p):
 	player = p

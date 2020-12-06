@@ -62,19 +62,25 @@ func _physics_process(delta):
 	
 	if lastThrowTime >= 1 / throwFrequency and player != null:
 		# Get player
-		var throwDir = player.transform.origin - transform.origin
+		var throwDir = player.global_transform.origin - global_transform.origin
 		throwDir.y = 0
+		var d = throwDir.length()
 		throwDir = throwDir.normalized()
 		
+		var throwVel = 8
+		var throwAngle = 0.25 * PI * min(d / 8, 1)
+		
 		var snowball = Snowball.instance()
-		snowball.velocity = 8 * throwDir
+		snowball.velocity = throwVel * (throwDir * cos(throwAngle) + Vector3(0, 1, 0) * sin(throwAngle))
 		
 		var sideOffs = Vector3(throwDir.z, 0, -throwDir.x) * .3
 		if throwCount % 2 == 1:
 			sideOffs = -sideOffs
 		
 		snowball.transform.origin = transform.origin + 0.9 * throwDir + sideOffs + Vector3(0, 0.2, 0)
+		
 		get_parent().add_child(snowball)
+		add_collision_exception_with(snowball)
 		
 		throwCount += 1
 		lastThrowTime = 0.0
