@@ -17,3 +17,11 @@ func _process(delta):
 	time += delta
 	$ColorGradingFilter.temperature = sin(time)
 	$ColorGradingFilter.update()
+
+
+func _on_rubberduck_arrived_at_port():
+	$test1/Crane.pickupField = $test1/Crane.get_path_to($rubberduck/ContainerField)
+
+
+func _on_rubberduck_leaving_port():
+	$test1/Crane.pickupField = null

@@ -13,6 +13,8 @@ const CONTAINER_DEPTH = 2.44
 export (float) var ROW_PADDING = 1.5
 export (float) var COLUMN_PADDING = 5.0 / 16
 
+export (bool) var inUse = false
+
 class ContainerSpot:
 	var index: int
 	var position: Vector3

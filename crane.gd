@@ -86,6 +86,7 @@ func _pickup(picker, from, offset = Vector3(0, 0, 0)):
 		return null
 
 	hooked = from.container
+	hooked.rotation = Vector3(0, -PI / 2.0, 0)
 	hooked.mode = RigidBody.MODE_KINEMATIC
 	hooked_offset = offset
 
@@ -145,6 +146,8 @@ func _animate():
 		yield(get_tree().create_timer(5), "timeout")
 		return
 
+	picker.inUse = true
+
 	var offset = picker.global_transform.origin - deposit.global_transform.origin
 
 	# (index, position, container)
@@ -157,6 +160,7 @@ func _animate():
 	#  2) crane up + deposit random
 	yield(_pickup(picker, from, offset), "completed")
 	if hooked == null:
+		picker.inUse = false
 		return
 
 	#  3) crane forward + crane down
@@ -170,6 +174,7 @@ func _animate():
 	from = deposit.find_topmost_container()
 	yield(_pickup(deposit, from), "completed")
 	if hooked == null:
+		picker.inUse = false
 		return
 
 	#  8) crane up + crane backward
@@ -177,6 +182,7 @@ func _animate():
 	put = picker.find_container_spot()
 	yield(_deposit(picker, put, offset), "completed")
 
+	picker.inUse = false
 
 
 func _on_PlayerDropArea_body_entered(body):
