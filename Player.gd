@@ -1,6 +1,7 @@
 extends KinematicBody
 
 const Paintball = preload("res://PaintBall/PaintBall.tscn")
+onready var GlobalState = get_node("/root/GlobalState")
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -38,8 +39,6 @@ var wasCrushed = false
 
 const MAX_HEALTH = 10
 export(int) var health = MAX_HEALTH
-
-var collectedPresents : int = 0
 
 # Actually equivalent to Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED right now.
 var inGame = false
@@ -107,7 +106,10 @@ func do_damage(source, dmg):
 	print("Taking", dmg, "damage, got hit by", source.get_name())
 
 func collect_present(source):
-	collectedPresents += 1
+	GlobalState.presents += 1
+
+func collect_cat(source):
+	GlobalState.cats += 1
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):

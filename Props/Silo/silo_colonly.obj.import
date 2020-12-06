@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/silo_colonly.obj-9a295e9b5087d1e440ab8b4497eb955b.mesh"
+
+[deps]
+
+files=[ "res://.import/silo_colonly.obj-9a295e9b5087d1e440ab8b4497eb955b.mesh" ]
+
+source_file="res://Props/Silo/silo_colonly.obj"
+dest_files=[ "res://.import/silo_colonly.obj-9a295e9b5087d1e440ab8b4497eb955b.mesh", "res://.import/silo_colonly.obj-9a295e9b5087d1e440ab8b4497eb955b.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
