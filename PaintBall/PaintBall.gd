@@ -3,6 +3,9 @@ extends RigidBody
 # var a = 2
 # var b = "text"
 export (float) var speed = 15
+export (Vector3) var direction = Vector3(0, 0, 0)
+export (Vector3) var gravity = Vector3(0, -9.8, 0)
+export (Vector3) var offsetVelocity = Vector3(0, 0, 0)
 var exploded = false
 var local_collision_norm
 var last_update_velocity
@@ -12,7 +15,7 @@ func _ready():
 	randomize()
 	
 	var dir = transform.basis
-	set_axis_velocity(Vector3(dir.z * speed))
+	set_axis_velocity(direction * speed + offsetVelocity)
 	
 	var color =  Color(randf(), randf(), randf())
 	
@@ -23,6 +26,7 @@ func _ready():
 
 	var processMat = $Particles.process_material.duplicate()
 	processMat.color = color
+	processMat.gravity = gravity
 	$Particles.process_material = processMat
 
 	pass # Replace with function body.
