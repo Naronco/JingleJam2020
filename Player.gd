@@ -39,6 +39,8 @@ var wasCrushed = false
 const MAX_HEALTH = 10
 export(int) var health = MAX_HEALTH
 
+var collectedPresents : int = 0
+
 # Actually equivalent to Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED right now.
 var inGame = false
 
@@ -103,7 +105,9 @@ func do_damage(source, dmg):
 	var healthBar = get_parent().find_node("GUI").find_node("HealthBar")
 	healthBar.set_health(health)
 	print("Taking", dmg, "damage, got hit by", source.get_name())
-	pass
+
+func collect_present(source):
+	collectedPresents += 1
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
