@@ -5,6 +5,8 @@ export(bool) var walkingEnabled = false
 export(float) var walkingSpeedMin = 0.2
 export(float) var walkingSpeedMax = 1.0
 
+const COLLAPSE_TIME = 2.0
+
 var lastThrowTime = 0.0
 var throwCount = 0
 var player
@@ -17,13 +19,34 @@ var newDirTime = rng.randf_range(0.5, 2.0)
 
 var velocity = Vector3()
 
+var collapsed = false
+var collapseTime = 0.0
+var collapsedSnowman = null
+
 const Snowball = preload("res://Snowball.tscn")
+const CollapsedSnowman = preload("res://CollapsedSnowman.tscn")
 
 func _ready():
 	rng.randomize()
 	lastThrowTime = rng.randf_range(-1, 0)
 
 func _physics_process(delta):
+	if collapsed:
+		collapseTime -= delta
+		if collapseTime <= 0:
+			remove_child(collapsedSnowman)
+			collapsedSnowman = null
+			
+			collapseTime = 0
+			collapsed = false
+			
+			$CollisionShape.disabled = false
+			$AnimatedSprite3D.visible = true
+			
+			lastThrowTime = rng.randf_range(-2, -1)
+			lastWalkDirChangeTime = 0.0
+		return
+	
 	lastThrowTime += delta
 	lastWalkDirChangeTime += delta
 	
@@ -55,6 +78,27 @@ func _physics_process(delta):
 		
 		throwCount += 1
 		lastThrowTime = 0.0
+
+func collapse():
+	if collapsed:
+		return
+	collapsed = true
+	collapseTime = COLLAPSE_TIME
+	
+	$CollisionShape.disabled = true
+	$AnimatedSprite3D.visible = false
+	
+	collapsedSnowman = CollapsedSnowman.instance()
+	
+	var headRandDir = Vector3(rng.randf_range(-1, 1), rng.randf_range(-0.5, 0.5), rng.randf_range(-1, 1)) * 3.0
+	var upperBodyRandDir = Vector3(rng.randf_range(-1, 1), rng.randf_range(-0.5, 0.5), rng.randf_range(-1, 1)) * 3.0
+	var lowerBodyRandDir = Vector3(rng.randf_range(-1, 1), rng.randf_range(-0.5, 0.5), rng.randf_range(-1, 1)) * 3.0
+	
+	add_child(collapsedSnowman)
+	
+	collapsedSnowman.get_node("Head").apply_central_impulse(headRandDir)
+	collapsedSnowman.get_node("UpperBody").apply_central_impulse(upperBodyRandDir)
+	collapsedSnowman.get_node("LowerBody").apply_central_impulse(lowerBodyRandDir)
 
 func set_player(p):
 	player = p
