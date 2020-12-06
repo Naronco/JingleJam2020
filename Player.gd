@@ -1,5 +1,6 @@
 extends KinematicBody
 
+const Paintball = preload("res://PaintBall/PaintBall.tscn")
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -8,6 +9,7 @@ extends KinematicBody
 export(float) var jumpVel = 6.0
 export(float) var walkingSpeed = 6.0
 export(float) var mouseSensitivity = 0.002
+export(float) var shootCooldown = 0.05;
 
 var PLAYER_GRAVITY = Vector3(0, -9.8, 0)
 
@@ -25,6 +27,9 @@ var velocityBeforeJump = Vector3()
 
 var rotationHelper
 var camera
+
+var shooting = false
+var shootWait = 0.0
 
 # Actually equivalent to Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED right now.
 var inGame = false
@@ -196,13 +201,28 @@ func _physics_process(delta):
 			if d < threshold and ci.collider_velocity.dot(cj.collider_velocity) <= 0 and bothHeavy:
 				print("CRUSH!")
 
+func shoot():
+	var paintball = Paintball.instance()
+	paintball.gravity = PLAYER_GRAVITY
+	paintball.direction = -camera.global_transform.basis.z
+	paintball.transform.origin = $RotationHelper/Camera/gun.global_transform.origin - camera.global_transform.origin + camera.transform.origin + Vector3(0, 0.1, 0)
+	paintball.transform.origin += paintball.direction * 0.15
+	paintball.direction.y += 0.05
+	add_collision_exception_with(paintball)
+	add_child(paintball)
+	shootWait = shootCooldown
+
 func _input(event):
 	# Mouse in viewport coordinates.
 	if event is InputEventMouseButton:
-		print("Mouse Click/Unclick at: ", event.position)
-		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			inGame = true
+		if !inGame:
+			print("Mouse Click/Unclick at: ", event.position)
+			if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+				inGame = true
+		else:
+			if event.button_index == BUTTON_LEFT:
+				shooting = event.pressed
 	elif event is InputEventMouseMotion:
 		if inGame:
 			camera.rotate_x(-event.relative.y * mouseSensitivity)
@@ -214,4 +234,8 @@ func _input(event):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if shooting:
+		if shootWait > 0:
+			shootWait -= delta
+		else:
+			shoot()
