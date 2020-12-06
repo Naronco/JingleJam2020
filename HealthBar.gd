@@ -17,4 +17,5 @@ func set_health(h):
 	else:
 		health = h
 	visible = true
-	texture.set_region(Rect2(h / (MAX_HEALTH / 2) * 64, (h % (MAX_HEALTH / 2)) * 24, 64, 24))
+	var hh : int = MAX_HEALTH - h
+	texture.set_region(Rect2(((hh / (MAX_HEALTH / 2)) as int) * 64, ((hh as int) % ((MAX_HEALTH / 2) as int)) * 24, 64, 24))

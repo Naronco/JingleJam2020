@@ -36,6 +36,8 @@ export(int) var crushDmg = 2
 var crushTime = 0.0
 var wasCrushed = false
 
+export(int) var health = 10
+
 # Actually equivalent to Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED right now.
 var inGame = false
 
@@ -91,7 +93,14 @@ func flip_gravity():
 	basisSlerpTime = 0.0
 
 func do_damage(source, dmg):
-	# TODO Take damage
+	health -= dmg
+	if health > 10:
+		health = 10
+	elif health <= 0:
+		health = 0
+		# TODO Die
+	var healthBar = get_parent().find_node("GUI").find_node("HealthBar")
+	healthBar.set_health(health)
 	print("Taking", dmg, "damage, got hit by", source.get_name())
 	pass
 

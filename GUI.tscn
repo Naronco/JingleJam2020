@@ -14,7 +14,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="HealthBar" type="TextureRect" parent="."]
 margin_left = 16.0
 margin_top = 16.0
 margin_right = 64.0
