@@ -2,13 +2,15 @@ extends RigidBody
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-export (float) var speed = 15
+export (float) var speed = 35
 export (Vector3) var direction = Vector3(0, 0, 0)
-export (Vector3) var gravity = Vector3(0, -9.8, 0)
+export (Vector3) var gravity = Vector3(0, -9.8, 0) #unused for now
 export (Vector3) var offsetVelocity = Vector3(0, 0, 0)
 var exploded = false
 var local_collision_norm
 var last_update_velocity
+var kill_timer = Timer.new()
+var max_lifetime = 5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,10 +28,18 @@ func _ready():
 
 	var processMat = $Particles.process_material.duplicate()
 	processMat.color = color
-	processMat.gravity = gravity
 	$Particles.process_material = processMat
 
-	pass # Replace with function body.
+	kill_timer.set_wait_time(max_lifetime)
+	kill_timer.set_one_shot(true)
+	self.add_child(kill_timer)
+	kill_timer.start()
+	await_kill()
+
+func await_kill():
+	yield(kill_timer, "timeout")
+	kill_timer.queue_free()
+	queue_free()
 
 func _physics_process(delta):
 	last_update_velocity = linear_velocity
@@ -54,19 +64,8 @@ func _on_Paintball_body_entered(body):
 	$Particles.process_material.direction = reflectDir;
 	$Particles.set_emitting(true)
 	sleeping = true
-	KillAfterTime($Particles.lifetime)
+	if !kill_timer.is_stopped():
+		kill_timer.set_wait_time($Particles.lifetime)
+		kill_timer.start()
 	$CollisionShape.queue_free()
 	$BallMeshInstance.queue_free()
-		
-	pass # Replace with function body.
-
-func KillAfterTime(time: float):
-	var t = Timer.new()
-	t.set_wait_time(time)
-	t.set_one_shot(true)
-	self.add_child(t)
-	t.start()
-	yield(t, "timeout")
-	t.queue_free()
-	queue_free()
-	pass

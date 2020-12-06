@@ -41,6 +41,7 @@ amount = 100
 one_shot = true
 explosiveness = 1.0
 randomness = 0.41
+visibility_aabb = AABB( -32, -16, -32, 64, 32, 64 )
 local_coords = false
 process_material = ExtResource( 2 )
 draw_pass_1 = SubResource( 2 )
