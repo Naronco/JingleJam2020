@@ -36,7 +36,8 @@ export(int) var crushDmg = 2
 var crushTime = 0.0
 var wasCrushed = false
 
-export(int) var health = 10
+const MAX_HEALTH = 10
+export(int) var health = MAX_HEALTH
 
 # Actually equivalent to Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED right now.
 var inGame = false
