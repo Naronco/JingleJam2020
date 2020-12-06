@@ -385,6 +385,56 @@ transform = Transform( 0.971359, 0, 0.237618, 0, 1, 0, -0.237618, 0, 0.971359, 2
 ] instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.545, 1.51215, 8.23452 )
 
+[node name="Snowman7" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30.2315, 1.55979, 20.1246 )
+
+[node name="Snowman8" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51.489, 4.34905, 12.1921 )
+
+[node name="Snowman10" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36.448, 6.84266, -6.75228 )
+
+[node name="Snowman11" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51.1178, 6.84266, -2.19707 )
+
+[node name="Snowman9" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 61.1142, 1.38951, 1.58238 )
+
+[node name="Snowman2" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40.1707, 5.00439, 27.5609 )
+
+[node name="Snowman3" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -57.8396, 2.41252, 6.0574 )
+
+[node name="Snowman4" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32.1865, 2.11856, 4.32286 )
+
+[node name="Snowman5" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3733, 0.987795, 14.9769 )
+
+[node name="Snowman6" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.84259, 5.16487, 34.617 )
+
 [node name="ContainerField" parent="test1" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 65.4, 0.5, 12 )
 numRows = 4
@@ -420,6 +470,166 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2597, 1, 3.22683 )
 ] instance=ExtResource( 22 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.958, 2, -2.881 )
 
+[node name="GingerbreadMan25" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9064, 2, 0.725955 )
+
+[node name="GingerbreadMan26" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.95964, 2, 18.5581 )
+
+[node name="GingerbreadMan27" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65896, 2, 22.5618 )
+
+[node name="GingerbreadMan22" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.1365, 2, 15.1751 )
+
+[node name="GingerbreadMan23" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7323, 2, 21.6 )
+
+[node name="GingerbreadMan30" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75231, 2, -12.0946 )
+
+[node name="GingerbreadMan31" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.8885, 2, 6.00973 )
+
+[node name="GingerbreadMan32" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8695, 2, 30.5921 )
+
+[node name="GingerbreadMan24" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.5745, 2, 31.537 )
+
+[node name="GingerbreadMan2" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.4112, 2, 9.11573 )
+
+[node name="GingerbreadMan3" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.4505, 2, 13.3102 )
+
+[node name="GingerbreadMan4" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.61424, 1.34007, 25.2485 )
+
+[node name="GingerbreadMan15" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39.6481, 1.34007, 9.79477 )
+
+[node name="GingerbreadMan16" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 47.6919, 1.34007, -4.66713 )
+
+[node name="GingerbreadMan17" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39.509, 1.34007, -5.58268 )
+
+[node name="GingerbreadMan18" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 56.9102, 1.34007, -5.19672 )
+
+[node name="GingerbreadMan19" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 47.7468, 1.34007, 16.8114 )
+
+[node name="GingerbreadMan20" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39.0026, 1.34007, 34.7272 )
+
+[node name="GingerbreadMan21" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 61.7416, 1.34007, 26.1232 )
+
+[node name="GingerbreadMan5" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.61424, 3.18833, 28.916 )
+
+[node name="GingerbreadMan33" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.203594, 5.20914, 29.84 )
+
+[node name="GingerbreadMan6" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9387, 5.36596, 28.916 )
+
+[node name="GingerbreadMan7" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9943, 5.36596, 34.6541 )
+
+[node name="GingerbreadMan8" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -39.0108, 1.09238, 21.9086 )
+
+[node name="GingerbreadMan9" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -46.7744, 1.09238, 21.9565 )
+
+[node name="GingerbreadMan10" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -54.3137, 1.09238, 22.3009 )
+
+[node name="GingerbreadMan11" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -47.7992, 1.09238, 12.6911 )
+
+[node name="GingerbreadMan12" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -41.8507, 1.09238, 3.18543 )
+
+[node name="GingerbreadMan13" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -35.6191, 1.09238, 8.78697 )
+
+[node name="GingerbreadMan14" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.1895, 1.09238, 3.66642 )
+
+[node name="GingerbreadMan28" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.0307, 1.09238, 3.22339 )
+
+[node name="GingerbreadMan29" parent="test1" groups=[
+"Enemies",
+] instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.6636, 1.09238, -0.266774 )
+
 [node name="ConveyorBelt_full" parent="test1" instance=ExtResource( 17 )]
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
@@ -435,7 +645,6 @@ environment = SubResource( 5 )
 
 [node name="ColorGradingFilter" parent="." instance=ExtResource( 5 )]
 material = SubResource( 6 )
-temperature = 0.0
 
 [node name="rubberduck" parent="." instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 92.1, -6, -90.9 )
@@ -754,7 +963,7 @@ transform = Transform( -0.538345, 0, 0.842725, 0, 1, 0, -0.842725, 0, -0.538345,
 [node name="Cat2" parent="Factory" groups=[
 "Cats",
 ] instance=ExtResource( 21 )]
-transform = Transform( -0.946843, 0.0144009, 0.321373, -0.0308369, -0.99846, -0.0461116, 0.320215, -0.0535706, 0.945829, -15.0299, 6.78535, 31.5565 )
+transform = Transform( 0.110449, 0.0691259, -0.991475, -0.0916544, 0.994036, 0.0590943, 0.989647, 0.0843459, 0.116127, -14.7706, 5.18229, 24.8053 )
 
 [node name="Present4" parent="Factory" groups=[
 "Presents",
@@ -851,7 +1060,7 @@ transform = Transform( 0.999922, 0.0124672, 0.000121653, -0.0124672, 0.999732, 0
 [node name="Present" parent="Factory" groups=[
 "Presents",
 ] instance=ExtResource( 20 )]
-transform = Transform( 0.999922, 0.0124672, 0.000121653, -0.0124672, 0.999732, 0.0195162, 0.000121802, -0.0195162, 0.99981, -6.95728, -0.28623, -15.3143 )
+transform = Transform( 0.999922, 0.0124672, 0.000121653, -0.0124672, 0.999732, 0.0195162, 0.000121862, -0.0195162, 0.99981, -10.8202, -0.28623, -13.1521 )
 
 [node name="Cat" parent="Factory" groups=[
 "Cats",
@@ -979,6 +1188,26 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17.6482
 ] instance=ExtResource( 20 )]
 transform = Transform( -0.5382, -0.0231584, 0.842499, -0.0124672, 0.999732, 0.0195162, -0.842725, 2.6077e-08, -0.538345, 68.0416, -0.424649, -0.0394211 )
 
+[node name="Present5" parent="Outside/Presents" groups=[
+"Presents",
+] instance=ExtResource( 20 )]
+transform = Transform( -0.5382, -0.0231584, 0.842499, -0.0124672, 0.999732, 0.0195162, -0.842725, 2.6077e-08, -0.538345, 39.8337, -2.78289, -15.0326 )
+
+[node name="Present8" parent="Outside/Presents" groups=[
+"Presents",
+] instance=ExtResource( 20 )]
+transform = Transform( -0.5382, -0.0231584, 0.842499, -0.0124672, 0.999732, 0.0195162, -0.842725, 2.6077e-08, -0.538345, 21.1548, -2.78289, -37.6496 )
+
+[node name="Present6" parent="Outside/Presents" groups=[
+"Presents",
+] instance=ExtResource( 20 )]
+transform = Transform( -0.5382, -0.0231584, 0.842499, -0.0124672, 0.999732, 0.0195162, -0.842725, 2.6077e-08, -0.538345, 54.6865, -2.78289, -11.8703 )
+
+[node name="Present7" parent="Outside/Presents" groups=[
+"Presents",
+] instance=ExtResource( 20 )]
+transform = Transform( -0.5382, -0.0231584, 0.842499, -0.0124672, 0.999732, 0.0195162, -0.842725, 2.6077e-08, -0.538345, 62.5879, -2.78289, -4.70574 )
+
 [node name="Present4" parent="Outside/Presents" groups=[
 "Presents",
 ] instance=ExtResource( 20 )]
@@ -1001,7 +1230,17 @@ material/0 = null
 [node name="Present" parent="ControlRoomAndReactor/ControlRoom" groups=[
 "Presents",
 ] instance=ExtResource( 20 )]
-transform = Transform( -0.5382, -0.0231584, 0.842499, -0.0124672, 0.999732, 0.0195162, -0.842725, -7.57077e-09, -0.538345, -1.5684, 1.83989, -8.38212 )
+transform = Transform( -0.5382, -0.0231584, 0.842499, -0.0124672, 0.999732, 0.0195162, -0.842725, -7.57077e-09, -0.538345, 9.4182, -3.56679, -8.38212 )
+
+[node name="Present6" parent="ControlRoomAndReactor/ControlRoom" groups=[
+"Presents",
+] instance=ExtResource( 20 )]
+transform = Transform( -0.5382, -0.0231584, 0.842499, -0.0124672, 0.999732, 0.0195162, -0.842725, -7.57077e-09, -0.538345, -9.9632, -3.56679, -13.5894 )
+
+[node name="Present5" parent="ControlRoomAndReactor/ControlRoom" groups=[
+"Presents",
+] instance=ExtResource( 20 )]
+transform = Transform( -0.5382, -0.0231584, 0.842499, -0.0124672, 0.999732, 0.0195162, -0.842725, -7.57077e-09, -0.538345, 6.27119, -1.37425, -3.20551 )
 
 [node name="Present2" parent="ControlRoomAndReactor/ControlRoom" groups=[
 "Presents",
@@ -1011,7 +1250,7 @@ transform = Transform( -0.5382, -0.0231584, 0.842499, -0.0124672, 0.999732, 0.01
 [node name="Present3" parent="ControlRoomAndReactor/ControlRoom" groups=[
 "Presents",
 ] instance=ExtResource( 20 )]
-transform = Transform( -0.5382, -0.0231584, 0.842499, -0.0124672, 0.999732, 0.0195162, -0.842725, -7.57077e-09, -0.538345, 2.92455, 1.83989, -16.8929 )
+transform = Transform( -0.5382, -0.0231584, 0.842499, -0.0124672, 0.999732, 0.0195162, -0.842725, -7.57077e-09, -0.538345, 59.042, -0.286382, -9.43759 )
 
 [node name="Present4" parent="ControlRoomAndReactor/ControlRoom" groups=[
 "Presents",
