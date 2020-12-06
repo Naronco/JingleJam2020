@@ -24,7 +24,7 @@ func _process(delta):
 		lastCats = GlobalState.cats
 		$CatIcon/CatsCounter.text = str(lastCats) + " / " + str(numCats)
 
-	$WinPrompt.visible = GlobalState.presents >= numPresents
+	$WinPrompt.visible = GlobalState.presents >= numPresents - 1
 	
 	if GlobalState.presents >= numPresents && GlobalState.cats >= numCats:
 		GlobalState.wonWithCats = true
