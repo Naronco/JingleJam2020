@@ -16,6 +16,7 @@ flags = 18
 frame_0/texture = SubResource( 2 )
 
 [sub_resource type="SpatialMaterial" id=4]
+params_cull_mode = 2
 params_billboard_mode = 2
 params_use_alpha_scissor = true
 params_alpha_scissor_threshold = 0.98
@@ -52,4 +53,5 @@ material_override = SubResource( 4 )
 pixel_size = 0.0625
 billboard = 2
 frames = SubResource( 7 )
+frame = 1
 playing = true
