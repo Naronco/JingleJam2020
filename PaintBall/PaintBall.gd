@@ -52,6 +52,9 @@ func _integrate_forces( state ):
 		#state.get_contact_collider_velocity_at_position(0)
 
 func _on_Paintball_body_entered(body):
+	if body.has_method("hit_by_paintball"):
+		body.hit_by_paintball(self)
+	
 	# Get Reflect from collision_normal and collision_velocity before that collision
 	var n_collision_velocity = last_update_velocity
 	var n_collision_norm = local_collision_norm.normalized() * 2

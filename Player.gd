@@ -242,8 +242,8 @@ func shoot():
 	paintball.gravity = PLAYER_GRAVITY
 	paintball.direction = -camera.global_transform.basis.z
 	paintball.transform.origin = $RotationHelper/Camera/gun.transform.origin + Vector3(0, 0.1, 0)
-	add_collision_exception_with(paintball)
 	$RotationHelper/Camera.add_child(paintball)
+	add_collision_exception_with(paintball)
 	shootWait = shootCooldown
 
 func _input(event):

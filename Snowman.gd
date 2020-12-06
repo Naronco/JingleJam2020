@@ -79,6 +79,9 @@ func _physics_process(delta):
 		throwCount += 1
 		lastThrowTime = 0.0
 
+func hit_by_paintball(paintball):
+	collapse()
+
 func collapse():
 	if collapsed:
 		return
