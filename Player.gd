@@ -103,7 +103,6 @@ func do_damage(source, dmg):
 		# TODO Die
 	var healthBar = get_parent().find_node("GUI").find_node("HealthBar")
 	healthBar.set_health(health)
-	print("Taking", dmg, "damage, got hit by", source.get_name())
 
 func collect_present(source):
 	GlobalState.presents += 1
@@ -112,6 +111,10 @@ func collect_cat(source):
 	GlobalState.cats += 1
 
 func _physics_process(delta):
+	# check out of bounds
+	if global_transform.origin.y > 70 or global_transform.origin.y < -10:
+		do_damage(null, MAX_HEALTH)
+	
 	if Input.is_action_just_pressed("ui_cancel"):
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
