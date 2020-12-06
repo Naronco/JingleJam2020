@@ -1,0 +1,178 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://logo_menu.png" type="Texture" id=1]
+[ext_resource path="res://Win.tres.gd" type="Script" id=2]
+[ext_resource path="res://PressStart2P-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://billboards.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 3 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.82849
+margin_top = -1.0
+margin_right = 4.82849
+margin_bottom = -1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.596078, 0.0509804, 0.113725, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -256.0
+margin_right = 512.0
+margin_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 403.0
+custom_fonts/font = SubResource( 1 )
+text = "YOU ARE WINNER!"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="Label"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -140.411
+margin_top = -119.831
+margin_right = -100.411
+margin_bottom = -79.8313
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Label/Control"]
+position = Vector2( 19.0357, 16.7443 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 16, 0, 16, 16 )
+
+[node name="Control2" type="Control" parent="Label"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -26.4106
+margin_top = -135.831
+margin_right = 13.5894
+margin_bottom = -95.8313
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Label/Control2"]
+position = Vector2( 19.0357, 16.7443 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 16, 0, 16, 16 )
+
+[node name="Control3" type="Control" parent="Label"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 93.5894
+margin_top = -119.831
+margin_right = 133.589
+margin_bottom = -79.8313
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Label/Control3"]
+position = Vector2( 19.0357, 16.7443 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 16, 0, 16, 16 )
+
+[node name="Control4" type="Control" parent="Label"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 93.5894
+margin_top = 64.1687
+margin_right = 133.589
+margin_bottom = 104.169
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Label/Control4"]
+position = Vector2( 19.0357, 16.7443 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 16, 0, 16, 16 )
+
+[node name="Control5" type="Control" parent="Label"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -26.4106
+margin_top = 80.1687
+margin_right = 13.5894
+margin_bottom = 120.169
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Label/Control5"]
+position = Vector2( 19.0357, 16.7443 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 16, 0, 16, 16 )
+
+[node name="Control6" type="Control" parent="Label"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -138.411
+margin_top = 64.1687
+margin_right = -98.4106
+margin_bottom = 104.169
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Label/Control6"]
+position = Vector2( 19.0357, 16.7443 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 16, 0, 16, 16 )

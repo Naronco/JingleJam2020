@@ -11,6 +11,7 @@ func set_health(h):
 	if h <= 0:
 		health = 0
 		visible = false
+		get_parent().get_node("DeathScreen").visible = true
 		return
 	elif h > MAX_HEALTH:
 		health = MAX_HEALTH

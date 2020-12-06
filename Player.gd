@@ -100,7 +100,7 @@ func do_damage(source, dmg):
 		health = 10
 	elif health <= 0:
 		health = 0
-		# TODO Die
+
 	var healthBar = get_parent().find_node("GUI").find_node("HealthBar")
 	healthBar.set_health(health)
 
@@ -114,11 +114,13 @@ func _physics_process(delta):
 	# check out of bounds
 	if global_transform.origin.y > 70 or global_transform.origin.y < -10:
 		do_damage(null, MAX_HEALTH)
-	
-	if Input.is_action_just_pressed("ui_cancel"):
-		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			inGame = false
+
+	if health <= 0:
+		if $RotationHelper/Camera.transform.origin.y > 0.1:
+			$RotationHelper/Camera.transform.origin.y -= delta
+		else:
+			$RotationHelper/Camera.transform.origin.y = 0.1
+		return
 	
 	# Player walk direction in global space
 	var walkingDir = Vector3()
@@ -137,10 +139,9 @@ func _physics_process(delta):
 		input_movement_vector.x -= 1
 	if Input.is_action_pressed("movement_right"):
 		input_movement_vector.x += 1
-		
-	# DEBUG ACTION
-	if not basisSlerping and Input.is_action_just_pressed("debug"):
-		flip_gravity()
+	if Input.is_action_pressed("win"):
+		get_tree().change_scene("res://Win.tscn")
+		return
 
 	if basisSlerping:
 		basisSlerpTime += delta
@@ -267,7 +268,7 @@ func _input(event):
 			if event.button_index == BUTTON_LEFT:
 				shooting = event.pressed
 	elif event is InputEventMouseMotion:
-		if inGame:
+		if inGame && health > 0:
 			camera.rotate_x(-event.relative.y * mouseSensitivity)
 			rotationHelper.rotate_y(-event.relative.x * mouseSensitivity)
 			var cam_rot = camera.rotation_degrees
@@ -278,6 +279,14 @@ func _input(event):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Input.is_action_just_pressed("ui_cancel"):
+		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			inGame = false
+
+	if health <= 0:
+		return
+
 	if shooting:
 		if shootWait > 0:
 			shootWait -= delta
