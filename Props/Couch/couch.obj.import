@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/couch.obj-28dd34f43030fc0ae52cfee68e96b629.mesh"
+
+[deps]
+
+files=[ "res://.import/couch.obj-28dd34f43030fc0ae52cfee68e96b629.mesh" ]
+
+source_file="res://Props/Couch/couch.obj"
+dest_files=[ "res://.import/couch.obj-28dd34f43030fc0ae52cfee68e96b629.mesh", "res://.import/couch.obj-28dd34f43030fc0ae52cfee68e96b629.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
