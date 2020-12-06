@@ -10,7 +10,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd F:\\GameProjects\\JingleJam2020\\spritesheet_col.png
+map_Kd spritesheet_col.png
 
 newmtl Sides
 Ns 365.551562
