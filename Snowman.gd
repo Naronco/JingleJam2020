@@ -69,7 +69,7 @@ func _physics_process(delta):
 		
 		if d < 10:
 			var throwVel = 8
-			var throwAngle = 0.25 * PI * min(d / 8, 1)
+			var throwAngle = 0.1 * PI * min(d / 8, 1)
 			
 			var snowball = Snowball.instance()
 			snowball.velocity = throwVel * (throwDir * cos(throwAngle) + Vector3(0, 1, 0) * sin(throwAngle))
