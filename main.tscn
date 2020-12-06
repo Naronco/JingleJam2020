@@ -30,7 +30,7 @@
 [ext_resource path="res://Props/Couch/CouchWide.tscn" type="PackedScene" id=28]
 [ext_resource path="res://Props/Couch/CouchWideFull.tscn" type="PackedScene" id=29]
 [ext_resource path="res://Props/F1Car/formula.obj" type="ArrayMesh" id=30]
-[ext_resource path="res://Props/TV/television.obj" type="ArrayMesh" id=31]
+[ext_resource path="res://Props/TV/television.tscn" type="PackedScene" id=31]
 [ext_resource path="res://Props/ControlPanel/ControlPanel.obj" type="ArrayMesh" id=32]
 [ext_resource path="res://Props/Silo/silo.tscn" type="PackedScene" id=33]
 
@@ -736,10 +736,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1643, 4.06407, 29.0443 )
 mesh = ExtResource( 32 )
 material/0 = null
 
-[node name="television" type="MeshInstance" parent="ControlRoomAndReactor/ControlRoom/ControlPanel"]
-transform = Transform( 0.673245, 0, -0.73942, 0, 1, 0, 0.73942, 0, 0.673245, -1.49109, 0.662547, -1.00091 )
-mesh = ExtResource( 31 )
-material/0 = ExtResource( 3 )
+[node name="television" parent="ControlRoomAndReactor/ControlRoom/ControlPanel" instance=ExtResource( 31 )]
 
 [node name="silo" parent="ControlRoomAndReactor" instance=ExtResource( 33 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.74959, -4.07878, -11.697 )
