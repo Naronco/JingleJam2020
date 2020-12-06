@@ -1,0 +1,25 @@
+# Blender MTL File: 'ConveyorBelts.blend'
+# Material Count: 2
+
+newmtl Sides
+Ns 365.551562
+Ka 0.791045 0.791045 0.791045
+Kd 0.000000 0.000000 0.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl spritesheet_col
+Ns 900.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump F:\\GameProjects\\JingleJam2020\\spritesheet_nrm.png
+map_Kd F:\\GameProjects\\JingleJam2020\\spritesheet_col.png
+map_d F:\\GameProjects\\JingleJam2020\\spritesheet_col.png
