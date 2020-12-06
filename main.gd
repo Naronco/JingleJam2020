@@ -14,8 +14,8 @@ func _ready():
 	a.randomize()
 	var val = a.randi_range(1, 9)       # pick a valid random number
 	var path = audio_file_path+str(val)+".wav"
-	if File.new().file_exists(path):
-		var sfx = load(path)
+	var sfx = load(path)
+	if sfx != null:
 		$Intro.stream = sfx
 		$Intro.volume_db = -6
 		$Intro.play()
