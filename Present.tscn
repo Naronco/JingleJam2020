@@ -4,6 +4,7 @@
 [ext_resource path="res://Present.gd" type="Script" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
+flags = 18
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 16, 16 )
 
@@ -15,6 +16,7 @@ params_alpha_scissor_threshold = 0.98
 albedo_texture = SubResource( 1 )
 
 [sub_resource type="AtlasTexture" id=3]
+flags = 18
 atlas = ExtResource( 1 )
 region = Rect2( 16, 0, 16, 16 )
 
