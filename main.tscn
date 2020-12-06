@@ -95,7 +95,11 @@ mesh = ExtResource( 2 )
 material/0 = null
 
 [node name="Container22" parent="test1" instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.14606, 35.9172, 4.35628 )
+transform = Transform( -0.819152, 0, -0.573576, 0, 1, 0, 0.573576, 0, -0.819152, 14.6461, 502.717, 29.9563 )
+mode = 0
+
+[node name="Container23" parent="test1" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.84606, 428.017, 9.35628 )
 mode = 0
 
 [node name="StaticBody3" type="StaticBody" parent="test1"]
@@ -349,7 +353,7 @@ transform = Transform( 1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 14.4431, 
 sleeping = true
 
 [node name="ReverseCard2" parent="test1" instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2.51029 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, 2.81029 )
 
 [node name="Sprite3D" type="Sprite3D" parent="test1/ReverseCard2"]
 material_override = SubResource( 2 )
@@ -357,11 +361,23 @@ pixel_size = 0.0625
 billboard = 2
 texture = SubResource( 3 )
 
-[node name="ReverseCard" type="Spatial" parent="test1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1.476 )
-
 [node name="ReverseCard3" parent="test1" instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.63825, 0.717323, 0.857119 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40.6, 0.5, -1.08971 )
+
+[node name="Sprite3D2" type="Sprite3D" parent="test1/ReverseCard3"]
+material_override = SubResource( 2 )
+pixel_size = 0.0625
+billboard = 2
+texture = SubResource( 3 )
+
+[node name="ReverseCard4" parent="test1" instance=ExtResource( 12 )]
+transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -48.7, 7.4, 11.5103 )
+
+[node name="Sprite3D2" type="Sprite3D" parent="test1/ReverseCard4"]
+material_override = SubResource( 2 )
+pixel_size = 0.0625
+billboard = 2
+texture = SubResource( 3 )
 
 [node name="RoadBarriers" parent="test1" instance=ExtResource( 14 )]
 transform = Transform( -0.974339, 0, -0.225087, 0, 1, 0, 0.225087, 0, -0.974339, 16.511, 0.5, -14.3682 )
@@ -602,6 +618,15 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.683445, -0.558564, -1.22737
 [node name="Factory" type="Spatial" parent="."]
 transform = Transform( -0.538345, 0, 0.842725, 0, 1, 0, -0.842725, 0, -0.538345, -39.0236, 0.771997, 12.1081 )
 
+[node name="Present4" parent="Factory" instance=ExtResource( 20 )]
+transform = Transform( 0.223369, 0, -0.974734, 0, 1, 0, 0.974734, 0, 0.223369, 7.31458, -0.226371, -5.32028 )
+
+[node name="Present5" parent="Factory" instance=ExtResource( 20 )]
+transform = Transform( 0.223369, 0, -0.974734, 0, 1, 0, 0.974734, 0, 0.223369, 11.9843, 4.87363, -9.10099 )
+
+[node name="Present6" parent="Factory" instance=ExtResource( 20 )]
+transform = Transform( 0.223369, 0, -0.974734, 0, 1, 0, 0.974734, 0, 0.223369, 14.1918, 4.87363, -8.28417 )
+
 [node name="Crates" type="Spatial" parent="Factory"]
 transform = Transform( 1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -2.31543, -0.279969, -4.01207 )
 
@@ -737,6 +762,7 @@ mesh = ExtResource( 32 )
 material/0 = null
 
 [node name="television" parent="ControlRoomAndReactor/ControlRoom/ControlPanel" instance=ExtResource( 31 )]
+material/0 = null
 
 [node name="silo" parent="ControlRoomAndReactor" instance=ExtResource( 33 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.74959, -4.07878, -11.697 )
