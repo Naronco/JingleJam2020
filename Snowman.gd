@@ -1,18 +1,41 @@
 extends KinematicBody
 
 export(float) var throwFrequency = 5.0
+export(bool) var walkingEnabled = false
+export(float) var walkingSpeedMin = 0.2
+export(float) var walkingSpeedMax = 1.0
 
 var lastThrowTime = 0.0
 var throwCount = 0
 var player
 
+var rng = RandomNumberGenerator.new()
+
+var randomWalkDir = Vector3()
+var lastWalkDirChangeTime = 0.0
+var newDirTime = rng.randf_range(0.5, 2.0)
+
+var velocity = Vector3()
+
 const Snowball = preload("res://Snowball.tscn")
 
 func _ready():
-	pass
+	rng.randomize()
+	lastThrowTime = rng.randf_range(-1, 0)
 
-func _process(delta):
+func _physics_process(delta):
 	lastThrowTime += delta
+	lastWalkDirChangeTime += delta
+	
+	if lastWalkDirChangeTime >= newDirTime:
+		var angle = rng.randf_range(0, 2 * PI)
+		randomWalkDir = Vector3(cos(angle), 0, sin(angle)) * rng.randf_range(walkingSpeedMin, walkingSpeedMax)
+		lastWalkDirChangeTime = 0.0
+		newDirTime = rng.randf_range(0.5, 2.0)
+	
+	if walkingEnabled:
+		velocity = randomWalkDir
+	velocity = move_and_slide(velocity, Vector3(0, 1, 0))
 	
 	if lastThrowTime >= 1 / throwFrequency and player != null:
 		# Get player
